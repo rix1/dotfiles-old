@@ -18,10 +18,10 @@ brew install coreutils wget z
 
 printf "Checking if oh-my-zsh is installed.. \n"
 
-if [ ! -d "oh-my-zsh" ]; then
+if [ ! -d "~/.oh-my-zsh" ]; then
   printf "Not installed \n"
   printf "Installing oh-my-zsh.. \n"
-  git clone https://github.com/robbyrussell/oh-my-zsh.git
+  curl -L http://install.ohmyz.sh | sh
 else
 	printf "oh-my-zsh already installed \n"
 fi
