@@ -1,3 +1,7 @@
+## What
+
+![result](http://i.imgur.com/FAgPZ6N.png)
+
 ## How
 
 1. Install iTerm2
