@@ -80,6 +80,11 @@ export LANG=en_US.UTF-8
 # Aliases
 source ~/.aliases/main
 
+# Check if user has private aliases as well
+if [ -f ~/.private_aliases ]; then
+	source ~/.private_aliases
+fi
+
 # Python environment autosource
 source ~/.scripts/detect_virtualenvs.sh
 

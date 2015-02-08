@@ -166,5 +166,11 @@ for file in $files; do
 done
 
 
+# Check for private aliases, add if exists
+if [ -f $dir/private_aliases ]; then
+	ln -sf $dir/private_aliases ~/.private_aliases
+fi
+
+
 echo "${red}Please restart the machine for all changes to take effect${NC}"
 
