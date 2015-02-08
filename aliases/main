@@ -1,0 +1,12 @@
+# Django
+alias runserver="python manage.py runserver"
+alias syncdb="python manage.py syncdb"
+alias jfrs="python manage.py runserver"
+
+
+# CCZE
+lesslog() { ccze -A < $1 | less -R; }
+netgraph() { netstat -anpet | grep ESTABLISHED | awk '{print $5}' | awk -F: '{print $1}' | sort | uniq -c | awk '{ printf("%s\t%s\t",$2,$1) ; for (i = 0; i < $1; i++) {printf("*")}; print "" }' | ccze -A;  }
+## show the the 4 more consumming processes and display with color
+pstail() { ps aux | sort -nk +4 | tail | ccze -A;  }
+# tail error.log | ccze -A

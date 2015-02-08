@@ -113,6 +113,10 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
+# function get_user_info() {
+  
+# }
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?

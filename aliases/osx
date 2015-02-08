@@ -1,0 +1,27 @@
+# Sublime
+function sublime(){
+	/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl $1
+}
+
+# Wordpress
+wpcreate() {
+
+    # Create folders
+    /Users/andrroy/Documents/idrift/wp-create-composer/wpcreate.sh "/var/www" "$1.dev" "$1";
+
+    # Add to hosts
+    echo "127.0.0.1 $1.dev" | sudo tee -a /etc/hosts;
+
+    # Add database
+    mysql -uroot --password=simplePass -e "create database $1"
+
+    # Open sublime text
+    sublime "/var/www/$1.dev/"
+}
+
+# Aliases
+alias flushdns='sudo dscacheutil -flushcache'
+alias ios="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
+alias kabel="ifconfig en0 inet"
+alias trad="ifconfig en1 inet"
+alias umount='diskutil unmount'
