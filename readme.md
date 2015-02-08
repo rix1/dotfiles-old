@@ -1,9 +1,5 @@
 Requirements:
 
-## Apps to be installed
-- iTerm2
-- Command line tools
-
 Todo:
 Handle private aliases and scripts
 Install z on linux
