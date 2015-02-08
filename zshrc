@@ -92,3 +92,10 @@ elif [ "$(uname)" '==' "Darwin" ]; then
 	# Z
 	. `brew --prefix`/etc/profile.d/z.sh
 fi
+
+# Dircolors
+eval `gdircolors ~/.dir_colors`
+alias ls='gls --color'
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+autoload -Uz compinit
+compinit
