@@ -1,8 +1,8 @@
-## What
+### What
 
 ![result](http://i.imgur.com/FAgPZ6N.png)
 
-## How
+### How
 
 1. Install iTerm2
 
@@ -23,5 +23,7 @@
 6. Restart iTerm
 
 
+### Private aliases
+If you have any extra aliases, you can put them in a file called ```private_aliases``` inside the dotfiles directory. That file will then automatically be sourced. 
 
 Inspired by https://remysharp.com/2013/07/25/my-terminal-setup
