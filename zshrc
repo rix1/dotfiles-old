@@ -92,15 +92,20 @@ source ~/.scripts/detect_virtualenvs.sh
 if [ "$(uname)" '==' "Linux" ]; then
 	source ~/.aliases/linux
 	source ~/.scripts/vboxmanage_completion.bash
+	source ~/.z.sh
+	# Dircolors
+	alias ls='ls -F'
+
 elif [ "$(uname)" '==' "Darwin" ]; then
 	source ~/.aliases/osx
 	# Z
 	. `brew --prefix`/etc/profile.d/z.sh
+	# Dircolors
+	eval `gdircolors ~/.dir_colors`
+	alias ls='gls --color'
 fi
 
 # Dircolors
-eval `gdircolors ~/.dir_colors`
-alias ls='gls --color'
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit

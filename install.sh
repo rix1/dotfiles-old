@@ -20,10 +20,12 @@ echo ""
 echo "You might need to input your sudo password"
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # OS spesifics
 if [ "$(uname)" == "Linux" ]; then
 	echo "\033[0;33m Environment detected as Linux \033[0m"
+	sudo apt-get install coreutils
 elif [ "$(uname)" == "Darwin" ]; then
 	
 	echo "\033[0;33m Environment detected as OSX \033[0m"
@@ -129,7 +131,6 @@ echo "\033[0;33m Setting up syntax highlighting.. \033[0m"
 if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
 	echo "\033[0;33m Not installed \033[0m"
 	echo "\033[0;33mInstalling syntax highlighting..\033[0m"
-	CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 	cd ~/.oh-my-zsh/custom/plugins && git clone git://github.com/zsh-users/zsh-syntax-highlighting.git 
 	cd CURRENT_DIR
 	echo "${green}OK${NC}"
@@ -165,6 +166,11 @@ for file in $files; do
 	ln -sf $dir/$file ~/.$file
 done
 
+
+# Add Z to ~ if on linux
+if [ "$(uname)" == "Linux" ]; then
+	ln -sf $dir/scripts/z.sh ~/.z.sh
+fi
 
 # Check for private aliases, add if exists
 if [ -f $dir/private_aliases ]; then
