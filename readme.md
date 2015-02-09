@@ -16,7 +16,13 @@
 
 4. Run install script
 
+On OS X
+
 ```cat install.sh | sh```
+
+On Linux
+
+```bash install.sh```
 
 5. Apply iTerm theme
 
@@ -24,6 +30,6 @@
 
 
 ### Private aliases
-If you have any extra aliases, you can put them in a file called ```private_aliases``` inside the dotfiles directory. That file will then automatically be sourced. 
+If you have any extra aliases, you can put them in a file called ```private_aliases``` inside the dotfiles directory. That file will then automatically be sourced.  
 
 Inspired by https://remysharp.com/2013/07/25/my-terminal-setup

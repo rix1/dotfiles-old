@@ -26,7 +26,7 @@ CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # OS spesifics
 if [ "$(uname)" == "Linux" ]; then
 	echo "\033[0;33m Environment detected as Linux \033[0m"
-	sudo apt-get install coreutils
+	sudo apt-get -y install coreutils curl
 elif [ "$(uname)" == "Darwin" ]; then
 	
 	echo "\033[0;33m Environment detected as OSX \033[0m"
