@@ -21,7 +21,7 @@ echo "You might need to input your sudo password"
 sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-CURRENT_DIR=$("$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 # OS spesifics
 if [ "$(uname)" == "Linux" ]; then
