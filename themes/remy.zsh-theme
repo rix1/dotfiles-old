@@ -70,6 +70,17 @@ prompt_context() {
   fi
 }
 
+promt_virtualenv() {
+if [[ $VIRTUAL_ENV != "" ]]
+    then
+      # Strip out the path and just leave the env name
+      venv="(${VIRTUAL_ENV##*/})"
+      prompt_segment black default
+      echo -n "$venv"
+fi
+
+}
+
 # Git: branch/detached head, dirty status
 prompt_git() {
   local ref dirty
@@ -113,20 +124,32 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
-# function get_user_info() {
-  
-# }
+prompt_user() {
+  local user=`whoami`
+  local hostname=`hostname`
+  prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%{%F{white}%}$hostname"
+  # prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%{%F{magenta}%}$hostname"
+}
+
+prompt_server() {
+  local hostname=`hostname`
+  prompt_segment black default
+  echo -n "$hostname"
+}
+
 
 ## Main prompt
 build_prompt() {
   RETVAL=$?
+  promt_virtualenv
   prompt_status
   prompt_git
   prompt_dir
   prompt_end
 }
 
-RPROMPT='$(prompt_online)'
+# RPROMPT='$(prompt_online)'
+# RPROMPT='$(prompt_server)'
 
 PROMPT='%{%f%b%k%}$(build_prompt) 
 » '

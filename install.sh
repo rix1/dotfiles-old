@@ -122,10 +122,10 @@ echo "${green}OK${NC}"
 
 
 # Install theme
-echo "\033[0;33mInstalling theme (remy)..\033[0m"
-THEME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/themes/remy.zsh-theme"
-ln -sf $THEME ~/.oh-my-zsh/themes/remy.zsh-theme
-echo "${green}OK${NC}"
+# echo "\033[0;33mInstalling theme (remy)..\033[0m"
+# THEME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/themes/remy.zsh-theme"
+# ln -sf $THEME ~/.oh-my-zsh/themes/remy.zsh-theme
+# echo "${green}OK${NC}"
 
 # Syntax highlighting
 echo "\033[0;33m Setting up syntax highlighting.. \033[0m"
@@ -164,7 +164,7 @@ for file in $files; do
 	echo "\033[0;33m Moving any existing dotfiles from ~ to $olddir \033[0m"
 	mv ~/.$file ~/dotfiles_old/
 	echo "\033[0;33m Creating symlink to $file in home directory. \033[0m"
-	ln -sf $dir/$file ~/.$file
+	ln -s $dir/$file ~/.$file
 done
 
 
@@ -174,9 +174,9 @@ if [ "$(uname)" == "Linux" ]; then
 fi
 
 # Check for private aliases, add if exists
-if [ -f $dir/private_aliases ]; then
-	ln -sf $dir/private_aliases ~/.private_aliases
-fi
+# if [ -f $dir/private_aliases ]; then
+# 	ln -sf $dir/private_aliases ~/.private_aliases
+# fi
 
 
 echo "${red}Please restart the machine for all changes to take effect${NC}"
