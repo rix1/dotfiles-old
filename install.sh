@@ -121,11 +121,11 @@ done
 echo "${green}OK${NC}"
 
 
-# Install theme
-# echo "\033[0;33mInstalling theme (remy)..\033[0m"
-# THEME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/themes/remy.zsh-theme"
-# ln -sf $THEME ~/.oh-my-zsh/themes/remy.zsh-theme
-# echo "${green}OK${NC}"
+#Install theme
+echo "\033[0;33mInstalling theme (remy)..\033[0m"
+THEME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/themes/remy.zsh-theme"
+ln -sf $THEME ~/.oh-my-zsh/themes/remy.zsh-theme
+echo "${green}OK${NC}"
 
 # Syntax highlighting
 echo "\033[0;33m Setting up syntax highlighting.. \033[0m"
