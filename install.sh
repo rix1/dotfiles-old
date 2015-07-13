@@ -133,7 +133,7 @@ if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
 	echo "\033[0;33m Not installed \033[0m"
 	echo "\033[0;33mInstalling syntax highlighting..\033[0m"
 	cd ~/.oh-my-zsh/custom/plugins && git clone git://github.com/zsh-users/zsh-syntax-highlighting.git 
-	cd CURRENT_DIR
+	cd $CURRENT_DIR
 	echo "${green}OK${NC}"
 
 else
