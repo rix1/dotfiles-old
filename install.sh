@@ -173,7 +173,7 @@ if [ "$(uname)" == "Linux" ]; then
 	ln -sf $dir/scripts/z.sh ~/.z.sh
 fi
 
-Check for private aliases, add if exists
+# Check for private aliases, add if exists
 if [ -f $dir/private_aliases ]; then
 	ln -sf $dir/private_aliases ~/.private_aliases
 fi
