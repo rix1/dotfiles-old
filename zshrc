@@ -93,10 +93,11 @@ source ~/.scripts/detect_virtualenvs.sh
 # OS spesifics
 if [ "$(uname)" '==' "Linux" ]; then
 	source ~/.aliases/linux
-	source ~/.scripts/vboxmanage_completion.bash
+	#source ~/.scripts/vboxmanage_completion.bash
 	source ~/.z.sh
 	# Dircolors
-	alias ls='ls -F'
+	eval `dircolors ~/.dir_colors`
+	alias ls='ls -F --color=auto'
 
 elif [ "$(uname)" '==' "Darwin" ]; then
 	source ~/.aliases/osx
@@ -114,3 +115,4 @@ compinit
 
 export NVM_DIR="/Users/andrroy/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+eval $(thefuck --alias)

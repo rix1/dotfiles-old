@@ -142,6 +142,7 @@ prompt_server() {
 build_prompt() {
   RETVAL=$?
   promt_virtualenv
+	prompt_user
   prompt_status
   prompt_git
   prompt_dir
