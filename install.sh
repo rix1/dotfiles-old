@@ -26,7 +26,7 @@ CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # OS spesifics
 if [ "$(uname)" == "Linux" ]; then
 	echo "\033[0;33m Environment detected as Linux \033[0m"
-	sudo apt-get -y install coreutils curl
+	sudo apt-get -y install coreutils curl zsh
 elif [ "$(uname)" == "Darwin" ]; then
 	
 	echo "\033[0;33m Environment detected as OSX \033[0m"
@@ -113,8 +113,8 @@ echo "\033[0;33m Checking if oh-my-zsh is installed.. \033[0m"
 
 if [ ! -d ~/.oh-my-zsh ]; then
 	echo "\033[0;33m Not installed \033[0m"
-	echo "\033[0;33mInstalling oh-my-zsh..\033[0m"
-	curl -L http://install.ohmyz.sh | sh
+	echo "\033[0;33m Installing oh-my-zsh..\033[0m"
+	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	echo "${green}OK${NC}"
 else
 	echo "\033[0;33m oh-my-zsh already installed \033[0m"
@@ -125,9 +125,17 @@ fi
 echo "\033[0;33mInstalling fonts..\033[0m"
 FONTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/fonts/*"
 
+if [ ! -d ~/.fonts ]; then
+	mkdir ~/.fonts
+fi
+
 for file in $FONTS
 do
-	cp $file ~/Library/Fonts/
+	if [ "$(uname)" == "Linux" ]; then
+		cp $file ~/.fonts/
+	else
+		cp $file ~/Library/Fonts/
+	fi
 	echo "\033[0;33m $file installed \033[0m"
 done
 echo "${green}OK${NC}"
