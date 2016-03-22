@@ -51,9 +51,6 @@ plugins=(git npm brew django zsh-syntax-highlighting)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export HOMEBREW_GITHUB_API_TOKEN="d25a719418ae164649b64b75813ad258ebda0c3a"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
