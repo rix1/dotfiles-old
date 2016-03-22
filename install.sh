@@ -93,6 +93,18 @@ elif [ "$(uname)" == "Darwin" ]; then
 	echo "\033[0;33mVerifying that necessary Homebrew packages are installed\033[0m"
 	brew install coreutils wget z
 	echo "${green}OK${NC}"
+
+	# Install brew packages
+	echo "\033[0;33mInstalling additional user packages\033[0m"
+	brew install ffmpeg nmap htop-osx imagemagick jenv node tree
+	echo "${green}OK${NC}"
+
+	# Install brew cask software
+	echo "\033[0;33mInstalling Rix1 software. This might take a while\033[0m"
+	brew tap caskroom/cask
+	brew install caskroom/cask/brew-cask
+	brew cask install spectacle sublime-text3 spotify android-file-transfer google-chrome quicksilver notational-velocity dropbox nvalt numi
+	echo "${green}OK${NC}"
 fi
 
 
