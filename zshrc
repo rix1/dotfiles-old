@@ -92,15 +92,7 @@ fi
 source ~/.scripts/detect_virtualenvs.sh
 
 # OS spesifics
-if [ "$(uname)" '==' "Linux" ]; then
-	source ~/.aliases/linux
-	#source ~/.scripts/vboxmanage_completion.bash
-	source ~/.z.sh
-	# Dircolors
-	eval `dircolors ~/.dir_colors`
-	alias ls='ls -F --color=auto'
-
-elif [ "$(uname)" '==' "Darwin" ]; then
+if [ "$(uname)" '==' "Darwin" ]; then
 	source ~/.aliases/osx
 	# Z
 	. `brew --prefix`/etc/profile.d/z.sh

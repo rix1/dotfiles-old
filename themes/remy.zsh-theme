@@ -125,8 +125,8 @@ prompt_status() {
 }
 
 prompt_user() {
-  local user=`whoami`
-  local hostname=`hostname`
+  local user="Rix1"
+  local hostname="MacbookAir"
   prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%{%F{white}%}$hostname"
   # prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%{%F{magenta}%}$hostname"
 }
