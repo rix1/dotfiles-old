@@ -103,7 +103,7 @@ elif [ "$(uname)" == "Darwin" ]; then
 	echo "\033[0;33mInstalling Rix1 software. This might take a while\033[0m"
 	brew tap caskroom/cask
 	brew install caskroom/cask/brew-cask
-	brew cask install spectacle sublime-text3 spotify android-file-transfer google-chrome quicksilver notational-velocity dropbox nvalt numi
+	brew cask install dropbox adobe-creative-cloud harvest spectacle android-file-transfer imageoptim spotify nvalt textmate firefox atom notational-velocity sublime-text drop-to-gif numi nylas-n1 quicksilver google-chrome slack
 	echo "${green}OK${NC}"
 fi
 
