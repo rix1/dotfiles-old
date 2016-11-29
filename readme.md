@@ -28,6 +28,15 @@ On Linux
 
 6. Restart iTerm
 
+7. Install fonts:
+
+```git clone https://github.com/powerline/fonts.git```
+
+8. Fix insecure files:
+
+```compaudit | xargs chmod g-w```
+
+
 
 ### Private aliases
 If you have any extra aliases, you can put them in a file called ```private_aliases``` inside the dotfiles directory. That file will then automatically be sourced.  
