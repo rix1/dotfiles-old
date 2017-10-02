@@ -46,7 +46,7 @@ ZSH_THEME="remy"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # Remember that zsh-syntax-highlighting must be last!!
-plugins=(git npm brew django zsh-syntax-highlighting) 
+plugins=(git npm brew django zsh-syntax-highlighting)
 
 # User configuration
 
@@ -63,7 +63,7 @@ export LANG=en_US.UTF-8
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='/Applications/Sublime Text.app/Contents/MacOS/Sublime Text'
 # fi
 
 # Compilation flags
@@ -90,6 +90,9 @@ fi
 
 # Python environment autosource
 source ~/.scripts/detect_virtualenvs.sh
+source /usr/local/bin/virtualenvwrapper.sh
+
+export LC_ALL=en_US.UTF-8
 
 # OS spesifics
 if [ "$(uname)" '==' "Darwin" ]; then
@@ -111,3 +114,25 @@ export NVM_DIR="/Users/rikardeide/.nvm"
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+### Tiny Care Terminal https://github.com/notwaldorf/tiny-care-terminal
+
+# List of accounts to read the last tweet from, comma separated
+# The first in the list is read by the party parrot.
+export TTC_BOTS='tinycarebot,selfcare_bot,magicrealismbot'
+
+# List of folders to look into for `git` commits, comma separated.
+export TTC_REPOS='~/Development/'
+
+# Location/zip code to check the weather for. Both 90210 and "San Francisco, CA"
+# should be ok. It's using weather.service.msn.com behind the curtains.
+export TTC_WEATHER='Oslo'
+
+# Set to false if you're an imperial savage. <3
+export TTC_CELSIUS=true
+
+# Unset this if you _don't_ want to use Twitter keys and want to
+# use web scraping instead.
+export TTC_APIKEYS=true
+
+# Twitter api keys

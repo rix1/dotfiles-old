@@ -126,8 +126,8 @@ prompt_status() {
 
 prompt_user() {
   local user="Rix1"
-  local hostname="mbp"
-  prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%{%F{white}%}$hostname"
+  local hostname="mbp 🦄 "
+  prompt_segment green black "%(!.%{%F{yellow}%}.)$user@%{%F{black}%}$hostname"
   # prompt_segment black default "%(!.%{%F{yellow}%}.)$user@%{%F{magenta}%}$hostname"
 }
 
@@ -152,5 +152,5 @@ build_prompt() {
 # RPROMPT='$(prompt_online)'
 # RPROMPT='$(prompt_server)'
 
-PROMPT='%{%f%b%k%}$(build_prompt) 
+PROMPT='%{%f%b%k%}$(build_prompt)
 » '

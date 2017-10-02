@@ -3,6 +3,12 @@ function sublime(){
 	/Users/rikardeide/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl $1
 }
 
+# Lua love
+function love(){
+	/Applications/love.app/Contents/MacOS/love $1
+}
+
+
 # Wordpress
 wpcreate() {
 
@@ -37,3 +43,4 @@ alias jlink="/Applications/SEGGER/JLink/JLinkExe"
 # function jlink(){
 # 	/Applications/SEGGER/JLink/JLinkExe $1
 # }
+

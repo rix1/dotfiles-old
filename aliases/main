@@ -13,3 +13,5 @@ netgraph() { netstat -anpet | grep ESTABLISHED | awk '{print $5}' | awk -F: '{pr
 ## show the the 4 more consumming processes and display with color
 pstail() { ps aux | sort -nk +4 | tail | ccze -A;  }
 # tail error.log | ccze -A
+
+alias dashboard=tiny-care-terminal
