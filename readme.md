@@ -37,6 +37,10 @@ On Linux
 ```compaudit | xargs chmod g-w```
 
 
+### Troubleshooting
+
+Is is something wrong with the fonts? Try `echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"`. This should look like this ![Icons](./characters.png)
+
 
 ### Private aliases
 If you have any extra aliases, you can put them in a file called ```private_aliases``` inside the dotfiles directory. That file will then automatically be sourced.  
