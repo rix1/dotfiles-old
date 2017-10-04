@@ -92,6 +92,11 @@ fi
 source ~/.scripts/detect_virtualenvs.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
+
 export LC_ALL=en_US.UTF-8
 
 # OS spesifics
@@ -134,5 +139,3 @@ export TTC_CELSIUS=true
 # Unset this if you _don't_ want to use Twitter keys and want to
 # use web scraping instead.
 export TTC_APIKEYS=true
-
-# Twitter api keys
