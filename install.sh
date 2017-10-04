@@ -96,14 +96,13 @@ elif [ "$(uname)" == "Darwin" ]; then
 
 	# Install brew packages
 	echo "\033[0;33mInstalling additional user packages\033[0m"
-	brew install ffmpeg nmap htop-osx imagemagick jenv node tree
+	brew install ffmpeg nmap htop-osx imagemagick jenv node tree yarn
 	echo "${green}OK${NC}"
 
 	# Install brew cask software
 	echo "\033[0;33mInstalling Rix1 software. This might take a while\033[0m"
-	brew tap caskroom/cask
-	brew install caskroom/cask/brew-cask
-	brew cask install dropbox adobe-creative-cloud harvest spectacle android-file-transfer imageoptim spotify nvalt textmate firefox atom notational-velocity sublime-text drop-to-gif numi nylas-n1 quicksilver google-chrome slack
+	brew install cask
+	brew cask install dropbox adobe-creative-cloud harvest spectacle android-file-transfer imageoptim spotify nvalt textmate firefox atom notational-velocity sublime-text numi quicksilver google-Ωchrome slack
 	echo "${green}OK${NC}"
 fi
 
