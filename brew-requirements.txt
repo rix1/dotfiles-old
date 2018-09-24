@@ -1,0 +1,13 @@
+coreutils
+ffmpeg
+heroku
+htop-osx
+imagemagick
+jenv
+nmap
+node
+npm
+tree
+wget
+yarn
+z

@@ -1,0 +1,10 @@
+bs-platform
+http-server
+localtunnel
+n
+now
+npm
+peerflix
+reason-cli
+sanity/cli
+ytdl
