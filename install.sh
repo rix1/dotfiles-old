@@ -29,7 +29,7 @@ if [ "$(uname)" == "Linux" ]; then
 	sudo apt-get -y install coreutils curl zsh
 elif [ "$(uname)" == "Darwin" ]; then
 	
-	echo "\033[0;33m Environment detected as OSX \033[0m"
+	echo "\033[0;33m Environment detected as macOS \033[0m"
 
 
 	# Show hidden files
@@ -96,13 +96,13 @@ elif [ "$(uname)" == "Darwin" ]; then
 
 	# Install brew packages
 	echo "\033[0;33mInstalling additional user packages\033[0m"
-	brew install ffmpeg nmap htop-osx imagemagick jenv node tree yarn
+	brew install ffmpeg nmap htop-osx imagemagick node tree yarn heroku
 	echo "${green}OK${NC}"
 
 	# Install brew cask software
 	echo "\033[0;33mInstalling Rix1 software. This might take a while\033[0m"
 	brew install cask
-	brew cask install dropbox adobe-creative-cloud harvest spectacle android-file-transfer imageoptim spotify nvalt textmate firefox atom notational-velocity sublime-text numi quicksilver google-Ωchrome slack
+	brew cask install 1password dropbox keybase adobe-creative-cloud harvest spectacle android-file-transfer imageoptim spotify nvalt firefox notational-velocity sublime-text numi quicksilver google-chrome slack visual-studio-code postman tunnelbear sketch
 	echo "${green}OK${NC}"
 fi
 

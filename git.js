@@ -36,3 +36,26 @@ Temporary Items
 # .vscode/launch.json
 # .vscode/extensions.json
 `
+
+const gitconfig = `
+[user]
+    email = rix1@otovo.com
+    name = Rikard Eide
+	signingkey = 50980AB2C75D059E
+[core]
+[commit]
+	gpgsign = true
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	s = show
+	loga = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	logf = git log --name-only
+	diffc = diff --cached
+[core]
+	excludesfile = /Users/rikardeide/.gitignore_global
+[rebase]
+	autoSquash = true
+`
