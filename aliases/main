@@ -15,3 +15,34 @@ pstail() { ps aux | sort -nk +4 | tail | ccze -A;  }
 # tail error.log | ccze -A
 
 alias dashboard=tiny-care-terminal
+
+
+function hdiff(){
+	heroku pipelines:diff -a $1-staging
+}
+
+function hconf(){
+	heroku config -a $1
+}
+
+function hdeploys() {
+	heroku releases -a $1
+}
+
+function grebs(){
+	git rebase -i HEAD~$1 --autosquash
+}
+
+alias grba=grebs
+
+# git
+alias gti=git
+
+function change_project(){
+	heroku run python -a otovocloud manage.py convert_to_pricespec --id=$1
+}
+
+function gfycat() {
+	echo 'https://thumbs.gfycat.com/'$1'-max-14mb.gif'
+	echo 'https://thumbs.gfycat.com/'$1'-size_restricted.gif'
+}
