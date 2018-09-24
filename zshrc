@@ -41,13 +41,6 @@ ZSH_THEME="remy"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# Remember that zsh-syntax-highlighting must be last!!
-plugins=(git npm brew django zsh-syntax-highlighting)
-
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -89,6 +82,10 @@ if [ -f ~/.private_aliases ]; then
 fi
 
 # Python environment autosource
+
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
+
 source ~/.scripts/detect_virtualenvs.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -120,6 +117,13 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# Remember that zsh-syntax-highlighting must be last!!
+plugins=(git brew django zsh-syntax-highlighting)
+
 ### Tiny Care Terminal https://github.com/notwaldorf/tiny-care-terminal
 
 # List of accounts to read the last tweet from, comma separated
@@ -139,3 +143,12 @@ export TTC_CELSIUS=true
 # Unset this if you _don't_ want to use Twitter keys and want to
 # use web scraping instead.
 export TTC_APIKEYS=true
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+
+export ANDROID_HOME="/usr/local/share/android-sdk"
+
+
+# Issue with GPG solved with this:
+export GPG_TTY=$(tty)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
