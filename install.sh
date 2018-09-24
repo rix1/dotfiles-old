@@ -122,7 +122,7 @@ fi
 
 # Install fonts
 echo "\033[0;33mInstalling fonts..\033[0m"
-FONTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/fonts/*"
+FONTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/fonts/rix1/*"
 
 if [ ! -d ~/.fonts ]; then
 	mkdir ~/.fonts
