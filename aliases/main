@@ -1,7 +1,6 @@
 # The usual stuff
 alias c="clear"
 
-
 # Django
 alias runserver="python manage.py runserver"
 alias syncdb="python manage.py syncdb"

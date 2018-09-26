@@ -13,6 +13,7 @@ numi
 nvalt
 postman
 quicksilver
+sketch
 slack
 spectacle
 spotify

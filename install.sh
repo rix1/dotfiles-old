@@ -1,3 +1,125 @@
+############ Installations functions ############
+
+function install_xcode_cli {
+  echo "Installing Xcode CLI tools..."
+  xcode-select --install;
+}
+
+function install_brew {
+  echo "Installing Homebrew..."
+  if !which brew 2>/dev/null; then
+    ruby \
+    -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
+    </dev/null
+    brew doctor
+  else
+    echo "Brew was already installed, upgrading"
+    brew update;
+    brew upgrade;
+    brew prune
+  fi
+}
+
+function install_brew_cask {
+  echo "Installing Homebrew Cask..."
+  brew cask > /dev/null 2>&1;
+  if [ $? -ne 0 ]; then
+    brew install caskroom/cask/brew-cask;
+    brew cask doctor;
+  else
+    echo "Brew cask was already installed, upgrading"
+    brew update;
+    brew upgrade;
+    brew prune
+  fi
+  brew tap caskroom/versions
+}
+
+function install_brew_deps {
+  echo "Installing brew dependencies..."
+  cat brew-requirements.txt | xargs brew install
+  brew cleanup
+  brew doctor
+}
+
+function install_brew_cask_deps {
+  echo "Installing brew cask dependencies..."
+  cat cask-requirements.txt | xargs brew cask install --appdir="/Applications"
+  brew cleanup
+  brew doctor
+}
+
+function setup_brew {
+  echo "Setting up brew..."
+  install_brew
+  install_brew_cask
+  install_brew_deps
+  install_brew_cask_deps
+}
+
+function install_npm_globals {
+  echo "Installing npm globals... using yarn."
+  if hash yarn 2>/dev/null; then
+    cat npm-global-requirements.txt | xargs sudo yarn global add
+  fi
+}
+
+function install_python_globals {
+  echo "Installing python globals..."
+  cat python-global-requirements.txt | xargs sudo easy_install
+}
+
+function setup_mac {
+  echo "✅ Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
+  defaults write NSGlobalDomain AppleKeyboardUIMode -int 3 2>/dev/null
+
+  echo "✅ Set a blazingly fast trackpad speed"
+  defaults write -g com.apple.trackpad.scaling -int 5 2>/dev/null
+
+  echo "✅ Automatically illuminate built-in MacBook keyboard in low light"
+  defaults write com.apple.BezelServices kDim -bool true 2>/dev/null
+
+  echo "✅ Turn off keyboard illumination when computer is not used for 5 minutes"
+  defaults write com.apple.BezelServices kDimTime -int 300 2>/dev/null
+
+  echo "✅ Disable the warning when changing a file extension"
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false 2>/dev/null
+
+  echo "✅ Remove the auto-hiding Dock delay"
+  defaults write com.apple.dock autohide-delay -float 0 2>/dev/null
+
+  echo "✅ Automatically hide and show the Dock"
+  defaults write com.apple.dock autohide -bool true 2>/dev/null
+
+  echo "✅ Trackpad: enable tap to click for this user and for the login screen"
+  defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true 2>/dev/null
+  defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 2>/dev/null
+  defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 2>/dev/null
+
+  defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseOneFingerDoubleTapGesture -int 0
+  defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseTwoFingerDoubleTapGesture -int 3
+  defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseTwoFingerHorizSwipeGesture -int 2
+  defaults write com.apple.driver.AppleBluetoothMultitouch.mouse.plist MouseButtonMode -string TwoButton
+  defaults write ~/Library/Preferences/.GlobalPreferences.plist com.apple.mouse.scaling -float 3
+  defaults write ~/Library/Preferences/.GlobalPreferences.plist com.apple.swipescrolldirection -boolean NO
+
+  echo "✅ Keyboard: Make key repeat fast"
+  defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+  defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
+
+  echo "✅ Finder: Set column view for as default for all finder windows"
+  defaults write com.apple.finder FXPreferredViewStyle Clmv
+
+  echo "✅ Dock: Wipe all (default) app icons from the Dock"
+  defaults write com.apple.dock persistent-apps -array
+}
+
+
+
+############ Installations functions end ############
+
+
+
 # Color stuff
 red="\033[0;31m"
 yellow="\033[0;33m"
@@ -60,37 +182,13 @@ elif [ "$(uname)" == "Darwin" ]; then
 		echo "${green}OK${NC}"
 	fi
 
-	# Install brew
-	echo "\033[0;33m Checking if Homebrew is installed.. \033[0m"
-	echo "${red}Homebrew wil be installed if it is not already done${NC}"
-	if ! which brew > /dev/null; then
-		echo "\033[0;33m Homebrew not installed \033[0m"
-		echo "\033[0;33mInstalling Homebrew.. \033[0m"
-		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-		echo "\033[0;33m Running brew doctor.. \033[0m"
-		brew doctor
-		echo "${green}OK${NC}"
-	else
-		echo "\033[0;33m Homebrew already installed \033[0m"
-	fi
-
-	# Install brew packages
-	echo "\033[0;33mVerifying that necessary Homebrew packages are installed\033[0m"
-	brew install coreutils wget z
-	echo "${green}OK${NC}"
-
-	# Install brew packages
-	echo "\033[0;33mInstalling additional user packages\033[0m"
-	brew install ffmpeg nmap htop-osx imagemagick node tree yarn heroku
-	echo "${green}OK${NC}"
-
-	# Install brew cask software
-	echo "\033[0;33mInstalling Rix1 software. This might take a while\033[0m"
-	brew install cask
-	brew cask install 1password dropbox keybase adobe-creative-cloud harvest spectacle android-file-transfer imageoptim spotify nvalt firefox notational-velocity sublime-text numi quicksilver google-chrome slack visual-studio-code postman tunnelbear sketch
-	echo "${green}OK${NC}"
+	setup_mac;
+	install_xcode_cli;
+	setup_brew;
+	install_npm_globals;
 fi
 
+install_python_globals;
 
 # Install zsh
 echo "\033[0;33m Checking if oh-my-zsh is installed.. \033[0m"
