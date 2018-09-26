@@ -24,7 +24,9 @@ On Linux
 
 ```bash install.sh```
 
-5. Apply iTerm theme
+5. Apply iTerm theme and settings
+
+Settings is located at `./iterm-preferences/com.googlecode.iterm2.plist`
 
 6. Restart iTerm
 
