@@ -60,21 +60,6 @@ elif [ "$(uname)" == "Darwin" ]; then
 		echo "${green}OK${NC}"
 	fi
 
-	echo "${purple}Use column view in all Finder windows by default? (y/n)${NC}"
-	read -r response </dev/tty
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-		defaults write com.apple.finder FXPreferredViewStyle Clmv
-		echo "${green}OK${NC}"
-	fi
-
-	echo "${purple}Wipe all (default) app icons from the Dock? (y/n)${NC}"
-	read -r response </dev/tty
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  		defaults write com.apple.dock persistent-apps -array
-  		echo "${green}OK${NC}"
-	fi
-
-
 	# Install brew
 	echo "\033[0;33m Checking if Homebrew is installed.. \033[0m"
 	echo "${red}Homebrew wil be installed if it is not already done${NC}"

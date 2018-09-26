@@ -1,22 +1,19 @@
 # The usual stuff
 alias c="clear"
 
+
 # Django
 alias runserver="python manage.py runserver"
 alias syncdb="python manage.py syncdb"
-alias jfrs="python manage.py runserver"
 
 
-# CCZE
-lesslog() { ccze -A < $1 | less -R; }
-netgraph() { netstat -anpet | grep ESTABLISHED | awk '{print $5}' | awk -F: '{print $1}' | sort | uniq -c | awk '{ printf("%s\t%s\t",$2,$1) ; for (i = 0; i < $1; i++) {printf("*")}; print "" }' | ccze -A;  }
 ## show the the 4 more consumming processes and display with color
 pstail() { ps aux | sort -nk +4 | tail | ccze -A;  }
 # tail error.log | ccze -A
 
 alias dashboard=tiny-care-terminal
 
-
+# Heroku
 function hdiff(){
 	heroku pipelines:diff -a $1-staging
 }
@@ -29,19 +26,26 @@ function hdeploys() {
 	heroku releases -a $1
 }
 
+function change_project(){
+	heroku run python -a otovocloud manage.py convert_to_pricespec --id=$1
+}
+
+
+# git
+alias gti=git
+
 function grebs(){
 	git rebase -i HEAD~$1 --autosquash
 }
 
 alias grba=grebs
 
-# git
-alias gti=git
-
-function change_project(){
-	heroku run python -a otovocloud manage.py convert_to_pricespec --id=$1
+function gi() {
+	curl -L -s https://www.gitignore.io/api/$@;
 }
 
+
+# misc
 function gfycat() {
 	echo 'https://thumbs.gfycat.com/'$1'-max-14mb.gif'
 	echo 'https://thumbs.gfycat.com/'$1'-size_restricted.gif'

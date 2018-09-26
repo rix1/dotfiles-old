@@ -1,9 +1,8 @@
 coreutils
 ffmpeg
+fzf
 heroku
 htop-osx
-imagemagick
-jenv
 nmap
 node
 npm

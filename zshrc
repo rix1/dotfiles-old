@@ -23,10 +23,10 @@ ZSH_THEME="remy"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -51,6 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -73,19 +74,10 @@ export LANG=en_US.UTF-8
 # disable the default virtualenv prompt change
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-# Aliases
-source ~/.aliases/main
-
-# Check if user has private aliases as well
-if [ -f ~/.private_aliases ]; then
-	source ~/.private_aliases
-fi
 
 # Python environment autosource
-
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
-
 source ~/.scripts/detect_virtualenvs.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -94,7 +86,14 @@ if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
 
-export LC_ALL=en_US.UTF-8
+
+# Aliases
+source ~/.aliases/main
+
+# Check if user has private aliases as well
+if [ -f ~/.private_aliases ]; then
+	source ~/.private_aliases
+fi
 
 # OS spesifics
 if [ "$(uname)" '==' "Darwin" ]; then
@@ -106,25 +105,21 @@ if [ "$(uname)" '==' "Darwin" ]; then
 	alias ls='gls --color'
 fi
 
+
 # Dircolors
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
 compinit
-
-export NVM_DIR="/Users/rikardeide/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # Remember that zsh-syntax-highlighting must be last!!
-plugins=(git brew django zsh-syntax-highlighting)
+plugins=(git brew zsh-syntax-highlighting)
 
-### Tiny Care Terminal https://github.com/notwaldorf/tiny-care-terminal
+
+## Tiny Care Terminal https://github.com/notwaldorf/tiny-care-terminal
 
 # List of accounts to read the last tweet from, comma separated
 # The first in the list is read by the party parrot.
@@ -143,12 +138,13 @@ export TTC_CELSIUS=true
 # Unset this if you _don't_ want to use Twitter keys and want to
 # use web scraping instead.
 export TTC_APIKEYS=true
-export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 export ANDROID_HOME="/usr/local/share/android-sdk"
 
-
 # Issue with GPG solved with this:
 export GPG_TTY=$(tty)
+
+# fzf is a general-purpose command-line fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

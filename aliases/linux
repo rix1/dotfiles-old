@@ -1,8 +1,0 @@
-# Screen
-function scr(){
-	screen -c /usr/local/screen/$1
-}
-
-# Aliases
-alias createjobbscreen="scr jobbscreen"
-alias matrix="cmatrix"

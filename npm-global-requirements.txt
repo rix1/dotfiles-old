@@ -7,4 +7,5 @@ npm
 peerflix
 reason-cli
 sanity/cli
+tiny-care-terminal
 ytdl
