@@ -1,3 +1,4 @@
+1password
 adobe-creative-cloud
 android-file-transfer
 android-studio
@@ -7,6 +8,7 @@ google-chrome
 harvest
 imageoptim
 iterm2
+keybase
 metabase-app
 notational-velocity
 numi
