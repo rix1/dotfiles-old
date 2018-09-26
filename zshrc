@@ -47,8 +47,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -76,15 +74,16 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 # Python environment autosource
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
-source ~/.scripts/detect_virtualenvs.sh
-source /usr/local/bin/virtualenvwrapper.sh
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
 
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then
-    eval "$(pyenv init -)"
-fi
+# source ~/.scripts/detect_virtualenvs.sh
+# source /usr/local/bin/virtualenvwrapper.sh
+
+# export PYENV_ROOT=/usr/local/var/pyenv
+# if which pyenv > /dev/null; then
+#     eval "$(pyenv init -)"
+# fi
 
 
 # Aliases
@@ -148,3 +147,5 @@ export GPG_TTY=$(tty)
 
 # fzf is a general-purpose command-line fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source $ZSH/oh-my-zsh.sh

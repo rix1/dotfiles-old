@@ -7,7 +7,7 @@ function install_xcode_cli {
 
 function install_brew {
   echo "Installing Homebrew..."
-  if !which brew 2>/dev/null; then
+	if ! which brew > /dev/null; then
     ruby \
     -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
     </dev/null
@@ -232,7 +232,7 @@ echo "${green}OK${NC}"
 
 
 #Install theme
-echo "\033[0;33mInstalling theme (remy)..\033[0m"
+echo "\033[0;33m Installing theme (remy)..\033[0m"
 THEME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/themes/remy.zsh-theme"
 ln -sf $THEME ~/.oh-my-zsh/themes/remy.zsh-theme
 echo "${green}OK${NC}"
