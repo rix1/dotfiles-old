@@ -114,6 +114,13 @@ function setup_mac {
   defaults write com.apple.dock persistent-apps -array
 }
 
+function setup_vs_code() {
+  echo "Installing VS code libraries..."
+  if hash code 2>/dev/null; then
+    cat code-requirements.txt | xargs code --install-extension
+  fi
+}
+
 
 
 ############ Installations functions end ############
@@ -186,6 +193,7 @@ elif [ "$(uname)" == "Darwin" ]; then
 	install_xcode_cli;
 	setup_brew;
 	install_npm_globals;
+  setup_vs_code;
 fi
 
 install_python_globals;
