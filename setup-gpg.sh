@@ -1,3 +1,6 @@
+# Custom script inspired by the great tutorial from pstadler:
+# https://github.com/pstadler/keybase-gpg-github
+
 # Color stuff
 red="\033[0;31m"
 yellow="\033[0;33m"
