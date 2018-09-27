@@ -39,6 +39,11 @@ Settings is located at `./iterm-preferences/com.googlecode.iterm2.plist`
 ```compaudit | xargs chmod g-w```
 
 
+8. (optional) Setup gpg by installing PGP keys from Keybase
+
+```cat setup-gpg.sh | sh```
+
+
 ### Troubleshooting
 
 Is is something wrong with the fonts? Try `echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"`. This should look like this ![Icons](./characters.png)
