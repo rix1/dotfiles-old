@@ -1,6 +1,7 @@
 coreutils
 ffmpeg
 fzf
+gpg
 heroku
 htop-osx
 nmap

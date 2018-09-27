@@ -1,6 +1,7 @@
 [user]
     email = rix1@otovo.com
-    name = Rikard Eide
+	name = Rikard Eide
+	signingkey = 50980AB2C75D059E
 [core]
 [commit]
 	gpgsign = true
