@@ -125,18 +125,17 @@ plugins=(git brew zsh-syntax-highlighting)
 export TTC_BOTS='tinycarebot,selfcare_bot,magicrealismbot'
 
 # List of folders to look into for `git` commits, comma separated.
-export TTC_REPOS='~/Development/'
+export TTC_REPOS='/Users/rikardeide/Development'
+
+export TTC_SAY_BOX=parrot
 
 # Location/zip code to check the weather for. Both 90210 and "San Francisco, CA"
 # should be ok. It's using weather.service.msn.com behind the curtains.
 export TTC_WEATHER='Oslo'
 
-# Set to false if you're an imperial savage. <3
-export TTC_CELSIUS=true
-
 # Unset this if you _don't_ want to use Twitter keys and want to
 # use web scraping instead.
-export TTC_APIKEYS=true
+export TTC_APIKEYS=false
 
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 

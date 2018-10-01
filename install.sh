@@ -60,7 +60,7 @@ function setup_brew {
 function install_npm_globals {
   echo "Installing npm globals... using yarn."
   if hash yarn 2>/dev/null; then
-    cat npm-global-requirements.txt | xargs sudo yarn global add
+    cat npm-global-requirements.txt | xargs yarn global add
   fi
 }
 
