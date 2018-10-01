@@ -21,3 +21,4 @@ spectacle
 spotify
 sublime-text
 tunnelbear
+visual-studio-code
