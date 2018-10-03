@@ -80,11 +80,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # source ~/.scripts/detect_virtualenvs.sh
 # source /usr/local/bin/virtualenvwrapper.sh
 
-# export PYENV_ROOT=/usr/local/var/pyenv
-# if which pyenv > /dev/null; then
-#     eval "$(pyenv init -)"
-# fi
-
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then
+    eval "$(pyenv init -)"
+fi
 
 # Aliases
 source ~/.aliases/main
