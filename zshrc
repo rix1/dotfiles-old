@@ -74,16 +74,18 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 # Python environment autosource
-# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-# VIRTUALENVWRAPPER_PYTHON=/usr/local/opt/python/libexec/bin/python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 
-# source ~/.scripts/detect_virtualenvs.sh
-# source /usr/local/bin/virtualenvwrapper.sh
 
 export PYENV_ROOT=/usr/local/var/pyenv
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
+
+source ~/.scripts/detect_virtualenvs.sh
+source /usr/local/bin/virtualenvwrapper.sh
+
 
 # Aliases
 source ~/.aliases/main
