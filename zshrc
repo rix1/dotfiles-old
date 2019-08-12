@@ -77,15 +77,13 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 
-
 export PYENV_ROOT=/usr/local/var/pyenv
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
 
-source ~/.scripts/detect_virtualenvs.sh
+# source ~/.scripts/detect_virtualenvs.sh
 source /usr/local/bin/virtualenvwrapper.sh
-
 
 # Aliases
 source ~/.aliases/main
@@ -146,6 +144,13 @@ export ANDROID_HOME="/usr/local/share/android-sdk"
 export GPG_TTY=$(tty)
 
 # fzf is a general-purpose command-line fuzzy finder.
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source $ZSH/oh-my-zsh.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fnm
+export PATH=$HOME/.fnm:$PATH
+eval `fnm env --multi`
+
+export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
