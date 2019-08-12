@@ -9,8 +9,6 @@ harvest
 imageoptim
 iterm2
 keybase
-metabase-app
-notational-velocity
 numi
 nvalt
 postman
@@ -22,3 +20,4 @@ spotify
 sublime-text
 tunnelbear
 visual-studio-code
+vivaldi
