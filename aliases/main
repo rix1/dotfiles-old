@@ -46,6 +46,37 @@ function gi() {
 
 # misc
 function gfycat() {
-	echo 'https://thumbs.gfycat.com/'$1'-max-14mb.gif'
-	echo 'https://thumbs.gfycat.com/'$1'-size_restricted.gif'
+  echo 'https://thumbs.gfycat.com/'$1'-max-14mb.gif'
+  echo 'https://thumbs.gfycat.com/'$1'-size_restricted.gif'
+}
+
+# Bundle Size (bs)
+
+function bs() {
+  UNCOMPRESSED_FILE_SIZE=`wc -c < $1`;
+  GZIPPED_FILE_SIZE=`gzip -c < $1 | wc -c`;
+  echo 'raw: '$UNCOMPRESSED_FILE_SIZE 'bytes';
+  echo 'gzip: '$GZIPPED_FILE_SIZE 'bytes';
+
+}
+
+alias gcmb="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
+
+
+
+# Usage: gifResize <input> <target size> <output>
+# e.g. `gifResize input.gif 620 out.gif`
+function gifResize() {
+  ffmpeg -hide_banner -v warning -i $1  -filter_complex "[0:v] scale=$2:-1:flags=lanczos,split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse" $3
+}
+
+
+function hideDesktop() {
+  defaults write com.apple.finder CreateDesktop false
+  killall Finder
+}
+
+function showDesktop() {
+  defaults write com.apple.finder CreateDesktop true
+  killall Finder
 }
