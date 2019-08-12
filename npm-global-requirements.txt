@@ -2,10 +2,10 @@
 bs-platform
 http-server
 localtunnel
-n
 now
 npm
 peerflix
 reason-cli
 tiny-care-terminal
 ytdl
+jay
