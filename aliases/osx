@@ -3,3 +3,9 @@ alias flushdns='sudo dscacheutil -flushcache'
 alias ios="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 alias kabel="ifconfig en0 inet"
 alias wifi="ifconfig en0 inet"
+
+
+# See https://www.iterm2.com/3.3/documentation-scripting-fundamentals.html
+function iterm2_print_user_vars() {
+  iterm2_set_user_var nodeVersion $(node -v)
+}

@@ -154,3 +154,5 @@ export PATH=$HOME/.fnm:$PATH
 eval `fnm env --multi`
 
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
