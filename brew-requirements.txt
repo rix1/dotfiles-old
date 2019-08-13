@@ -2,12 +2,8 @@ coreutils
 ffmpeg
 fzf
 gpg
-heroku
 htop-osx
 nmap
-node
-npm
 tree
 wget
-yarn
 z
