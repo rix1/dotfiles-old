@@ -12,7 +12,7 @@
 
 3. Clone repo to home directory
 
-```git clone https://github.com/andrroy/dotfiles.git```
+```git clone https://github.com/rix1/dotfiles.git```
 
 4. Run install script
 
