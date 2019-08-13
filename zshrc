@@ -83,7 +83,7 @@ if which pyenv > /dev/null; then
 fi
 
 # source ~/.scripts/detect_virtualenvs.sh
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # Aliases
 source ~/.aliases/main
