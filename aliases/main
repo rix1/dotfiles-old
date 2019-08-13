@@ -80,3 +80,7 @@ function showDesktop() {
   defaults write com.apple.finder CreateDesktop true
   killall Finder
 }
+
+function a() {
+  alias | grep $1
+}
