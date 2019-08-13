@@ -103,7 +103,6 @@ if [ "$(uname)" '==' "Darwin" ]; then
 	alias ls='gls --color'
 fi
 
-
 # Dircolors
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 autoload -Uz compinit
@@ -143,6 +142,10 @@ export ANDROID_HOME="/usr/local/share/android-sdk"
 # Issue with GPG solved with this:
 export GPG_TTY=$(tty)
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # fzf is a general-purpose command-line fuzzy finder.
 
 source $ZSH/oh-my-zsh.sh
@@ -150,7 +153,7 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fnm
-export PATH=$HOME/.fnm:$PATH
+# export PATH=$HOME/.fnm:$PATH
 eval `fnm env --multi`
 
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
