@@ -163,3 +163,10 @@ eval `fnm env --multi`
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/usr/local/sbin:$PATH"
+
+
+export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin/
+
+PASSWORD_STORE_DIR=~/.password-store/
