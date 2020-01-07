@@ -4,6 +4,10 @@ alias c="clear"
 # Django
 alias runserver="python manage.py runserver"
 alias syncdb="python manage.py syncdb"
+alias woc="workon cloud"
+
+# Yarn
+alias ys="yarn start"
 
 
 ## show the the 4 more consumming processes and display with color
@@ -14,14 +18,17 @@ alias dashboard=tiny-care-terminal
 
 # Heroku
 function hdiff(){
+  echo "running: heroku pipelines:diff -a $1-staging"
 	heroku pipelines:diff -a $1-staging
 }
 
 function hconf(){
+  echo "running: heroku config -a $1"
 	heroku config -a $1
 }
 
 function hdeploys() {
+  echo "running: heroku releases -a $1"
 	heroku releases -a $1
 }
 
@@ -66,17 +73,19 @@ alias gcmb="git branch --merged | grep -Ev '(^\*|master)' | xargs git branch -d"
 
 # Usage: gifResize <input> <target size> <output>
 # e.g. `gifResize input.gif 620 out.gif`
+
 function gifResize() {
   ffmpeg -hide_banner -v warning -i $1  -filter_complex "[0:v] scale=$2:-1:flags=lanczos,split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse" $3
 }
 
-
 function hideDesktop() {
+  echo "defaults write com.apple.finder CreateDesktop false"
   defaults write com.apple.finder CreateDesktop false
   killall Finder
 }
 
 function showDesktop() {
+  echo "running: write com.apple.finder CreateDesktop true"
   defaults write com.apple.finder CreateDesktop true
   killall Finder
 }
