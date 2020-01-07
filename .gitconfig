@@ -1,5 +1,5 @@
 [user]
-  email = rix1@otovo.com
+  email = rikardeide@gmail.com
   name = Rikard Eide
   signingkey = 50980AB2C75D059E
 [core]
@@ -13,8 +13,10 @@
   s = show
   loga = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
   logf = git log --name-only
-  diffc = diff --cached
+  # diffc = diff --cached
 [core]
   excludesfile = /Users/rikardeide/.gitignore
 [rebase]
   autoSquash = true
+[push]
+  default = current
