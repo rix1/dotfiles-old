@@ -74,10 +74,12 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 
 # Python environment autosource
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/var/pyenv/shims/python
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+# export VIRTUALENVWRAPPER_PYTHON=/usr/local/var/pyenv/shims/python
+# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=/usr/local/share/python:$PATH
 
 
 export PYENV_ROOT=/usr/local/var/pyenv
@@ -138,8 +140,6 @@ export TTC_WEATHER='Oslo'
 # use web scraping instead.
 export TTC_APIKEYS=false
 
-export PATH="/usr/local/opt/openssl/bin:$PATH"
-
 export ANDROID_HOME="/usr/local/share/android-sdk"
 
 # Issue with GPG solved with this:
@@ -165,7 +165,35 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="/usr/local/sbin:$PATH"
 
 
-export DYLD_LIBRARY_PATH=/usr/local/opt/openssl/lib:$DYLD_LIBRARY_PATH
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin/
 
 PASSWORD_STORE_DIR=~/.password-store/
+
+# export CMAKE_OSX_SYSROOT=$(xcrun --show-sdk-path)
+# export CMAKE_CXX_FLAGS="-isysroot $(xcrun --show-sdk-path)"
+# export C_INCLUDE_PATH=/usr/local/include
+# export CPLUS_INCLUDE_PATH=/usr/local/include
+
+# export LDFLAGS="-L/usr/local/opt/zlib/lib"
+# export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+# From @andrrroy:
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# openssl
+export LDFLAGS="-L/usr/local/opt/readline/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/readline/include:$CPPFLAGS"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include:$CPPFLAGS"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+export DYLD_LIBRARY_PATH=/usr/local/opt/openssl@1.1/lib:$DYLD_LIBRARY_PATH
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+
+# For compilers to find zlib you may need to set:
+export LDFLAGS="-L/usr/local/opt/zlib/lib:$LDFLAGS"
+export CPPFLAGS="-I/usr/local/opt/zlib/include:$CPPFLAGS"
+
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"

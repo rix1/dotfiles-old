@@ -39,6 +39,7 @@ function change_project(){
 
 # git
 alias gti=git
+alias gppf=git push --no-verify -f
 
 function grebs(){
 	git rebase -i HEAD~$1 --autosquash
@@ -92,4 +93,18 @@ function showDesktop() {
 
 function a() {
   alias | grep $1
+}
+
+
+function sass(){
+  npx sass-migrator module --verbose --migrate-deps $1
+}
+
+function t(){
+  date "+%Y-%m-%d %H:%M" | pbcopy
+}
+
+
+function cdntime(){
+  time curl -I -XGET $1
 }

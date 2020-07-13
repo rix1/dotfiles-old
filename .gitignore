@@ -38,3 +38,7 @@ Temporary Items
 # .vscode/tasks.json
 # .vscode/launch.json
 # .vscode/extensions.json
+.yalc
+yalc.lock
+.now/
+rix-temp/

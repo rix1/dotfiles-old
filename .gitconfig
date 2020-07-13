@@ -2,7 +2,9 @@
   email = rikardeide@gmail.com
   name = Rikard Eide
   signingkey = 50980AB2C75D059E
-[core]
+	useConfigOnly = true
+[color]
+  diff = auto
 [commit]
   gpgsign = true
 [alias]
@@ -15,7 +17,7 @@
   logf = git log --name-only
   # diffc = diff --cached
 [core]
-  excludesfile = /Users/rikardeide/.gitignore
+	excludesfile = /Users/rikardeide/.gitignore
 [rebase]
   autoSquash = true
 [push]
