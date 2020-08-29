@@ -129,6 +129,7 @@ export TTC_BOTS='tinycarebot,selfcare_bot,magicrealismbot'
 
 # List of folders to look into for `git` commits, comma separated.
 export TTC_REPOS='/Users/rikardeide/Development'
+export TTC_REPOS_DEPTH=2
 
 export TTC_SAY_BOX=parrot
 
