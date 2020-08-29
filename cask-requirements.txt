@@ -1,7 +1,6 @@
 1password
 adobe-creative-cloud
 android-file-transfer
-android-studio
 dropbox
 firefox
 google-chrome
@@ -20,4 +19,3 @@ spotify
 sublime-text
 tunnelbear
 visual-studio-code
-vivaldi
