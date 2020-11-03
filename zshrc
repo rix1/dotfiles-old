@@ -82,10 +82,10 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/share/python:$PATH
 
 
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then
-    eval "$(pyenv init -)"
-fi
+# export PYENV_ROOT=/usr/local/var/pyenv
+# if which pyenv > /dev/null; then
+    # eval "$(pyenv init -)"
+# fi
 
 # source ~/.scripts/detect_virtualenvs.sh
 source /usr/local/bin/virtualenvwrapper.sh
