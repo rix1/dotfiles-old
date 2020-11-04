@@ -1,5 +1,6 @@
 coreutils
 ffmpeg
+fnm
 fzf
 gpg
 htop-osx

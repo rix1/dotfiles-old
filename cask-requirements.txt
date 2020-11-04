@@ -11,8 +11,8 @@ keybase
 numi
 nvalt
 postman
-slack
 rectangle
+slack
 spotify
 sublime-text
 tunnelbear
