@@ -228,3 +228,6 @@ PASSWORD_STORE_DIR=~/.password-store/
 # export DD_TRACE_STARTUP_LOGS="false"
 
 # end
+
+
+eval "$(gh completion -s zsh)"

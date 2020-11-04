@@ -22,3 +22,5 @@
   autoSquash = true
 [push]
   default = current
+[includeIf "gitdir:~/Development/otovo/"]
+    path = ~/Development/otovo/.gitconfig
