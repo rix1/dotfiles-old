@@ -1,11 +1,9 @@
 @sanity/cli
-bs-platform
 http-server
 localtunnel
 now
 npm
 peerflix
-reason-cli
 tiny-care-terminal
 ytdl
 jay

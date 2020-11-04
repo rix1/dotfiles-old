@@ -11,10 +11,8 @@ keybase
 numi
 nvalt
 postman
-quicksilver
-sketch
 slack
-spectacle
+rectangle
 spotify
 sublime-text
 tunnelbear

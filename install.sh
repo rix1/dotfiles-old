@@ -60,7 +60,14 @@ function setup_brew {
 function install_npm_globals {
   echo "Installing npm globals... using yarn."
   if hash yarn 2>/dev/null; then
-    cat npm-global-requirements.txt | xargs yarn global add
+    cat npm-global-requirements.txt | xargs npm i -g
+  fi
+}
+
+function setup_vs_code() {
+  echo "Installing VS code libraries..."
+  if hash code 2>/dev/null; then
+    cat vs-code-requirements.txt | xargs code --install-extension
   fi
 }
 
@@ -112,13 +119,6 @@ function setup_mac {
 
   echo "✅ Dock: Wipe all (default) app icons from the Dock"
   defaults write com.apple.dock persistent-apps -array
-}
-
-function setup_vs_code() {
-  echo "Installing VS code libraries..."
-  if hash code 2>/dev/null; then
-    cat code-requirements.txt | xargs code --install-extension
-  fi
 }
 
 
@@ -193,7 +193,7 @@ elif [ "$(uname)" == "Darwin" ]; then
 	install_xcode_cli;
 	setup_brew;
 	install_npm_globals;
-  setup_vs_code;
+  	setup_vs_code;
 fi
 
 install_python_globals;
