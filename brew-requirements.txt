@@ -8,3 +8,4 @@ nmap
 tree
 wget
 z
+gh

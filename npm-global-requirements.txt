@@ -1,7 +1,7 @@
 @sanity/cli
 http-server
 localtunnel
-now
+vercel
 npm
 peerflix
 tiny-care-terminal

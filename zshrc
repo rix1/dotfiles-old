@@ -158,7 +158,7 @@ source $ZSH/oh-my-zsh.sh
 
 # fnm
 # export PATH=$HOME/.fnm:$PATH
-eval `fnm env --multi`
+eval `fnm env`
 
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
