@@ -69,14 +69,9 @@ export LC_ALL=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# disable the default virtualenv prompt change
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 
 # Python environment autosource
 
-# export VIRTUALENVWRAPPER_PYTHON=/usr/local/var/pyenv/shims/python
-# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/share/python:$PATH
@@ -87,8 +82,6 @@ export PATH=/usr/local/share/python:$PATH
     # eval "$(pyenv init -)"
 # fi
 
-# source ~/.scripts/detect_virtualenvs.sh
-source /usr/local/bin/virtualenvwrapper.sh
 
 # Aliases
 source ~/.aliases/main
