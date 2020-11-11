@@ -28,24 +28,12 @@ ZSH_THEME="remy"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -58,11 +46,6 @@ export LC_ALL=en_US.UTF-8
 #   export EDITOR='/Applications/Sublime Text.app/Contents/MacOS/Sublime Text'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -71,15 +54,13 @@ export LC_ALL=en_US.UTF-8
 
 
 # Python environment autosource
-
-
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/share/python:$PATH
 
 
-# export PYENV_ROOT=/usr/local/var/pyenv
+# export PYENV_ROOT=/usr/local/bin/pyenv
 # if which pyenv > /dev/null; then
-    # eval "$(pyenv init -)"
+#     eval "$(pyenv init -)"
 # fi
 
 
@@ -143,91 +124,42 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-# fzf is a general-purpose command-line fuzzy finder.
 
 source $ZSH/oh-my-zsh.sh
 
+# fzf is a general-purpose command-line fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fnm
-# export PATH=$HOME/.fnm:$PATH
 eval `fnm env`
 
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 export PATH="/usr/local/sbin:$PATH"
-
-
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/12/bin/
 
-PASSWORD_STORE_DIR=~/.password-store/
+export PASSWORD_STORE_DIR=~/.password-store/
 
-# export CMAKE_OSX_SYSROOT=$(xcrun --show-sdk-path)
-# export CMAKE_CXX_FLAGS="-isysroot $(xcrun --show-sdk-path)"
-# export C_INCLUDE_PATH=/usr/local/include
-# export CPLUS_INCLUDE_PATH=/usr/local/include
+# 2020-11-11 11:38 Needed to get psycopg2 working!
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl@1.1/lib/"
 
-# export LDFLAGS="-L/usr/local/opt/zlib/lib"
-# export CPPFLAGS="-I/usr/local/opt/zlib/include"
-
-# From @andrrroy:
-# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-
-# openssl
-# export LDFLAGS="-L/usr/local/opt/readline/lib:$LDFLAGS"
-# export CPPFLAGS="-I/usr/local/opt/readline/include:$CPPFLAGS"
-# export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib:$LDFLAGS"
-# export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include:$CPPFLAGS"
-# export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export DYLD_LIBRARY_PATH=/usr/local/opt/openssl@1.1/lib:$DYLD_LIBRARY_PATH
-# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
-
-# For compilers to find zlib you may need to set:
-# export LDFLAGS="-L/usr/local/opt/zlib/lib:$LDFLAGS"
-# export CPPFLAGS="-I/usr/local/opt/zlib/include:$CPPFLAGS"
-
-# For pkg-config to find zlib you may need to set:
-# export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
-# export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-
-# start
-
-# HOMEBREW Environment Variables
-# export HOMEBREW_INSTALL_CLEANUP=TRUE
-# export HOMEBREW_PREFIX=$(brew --prefix)
-
-# export PATH="$HOMEBREW_PREFIX/opt/tcl-tk/bin:$PATH"
-
-# Use PyEnv to set Python Environment
-# export PYENV_SHELL=zsh
-# export PYENV_ROOT=$(pyenv root)
-# export PYENV_VERSION=$(pyenv version-name)
-# export PYTHONPATH=$PYENV_ROOT/shims
-
-# PyEnv & HOMEBREW Build variables
-# PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I$HOMEBREW_PREFIX/opt/tcl-tk/include'"
-# export PYTHON_CONFIGURE_OPTS="$PYTHON_CONFIGURE_OPTS --with-tcltk-libs='-L$HOMEBREW_PREFIX/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
-# export CFLAGS="-O2 -I$HOMEBREW_PREFIX/include"
-# CPPFLAGS="-I$HOMEBREW_PREFIX/opt/sqlite/include -I$HOMEBREW_PREFIX/opt/tcl-tk/include"
-# CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/zlib/include"
-# CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/bzip2/include"
-# export CPPFLAGS="$CPPFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include"
-# LDFLAGS="-L$HOMEBREW_PREFIX/opt/sqlite/lib -L$HOMEBREW_PREFIX/opt/tcl-tk/lib"
-# LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/zlib/lib"
-# LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/bzip2/lib"
-# export LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/readline/lib"
-# PKG_CONFIG_PATH="$HOMEBREW_PREFIX/opt/sqlite/lib/pkgconfig:$HOMEBREW_PREFIX/opt/tcl-tk/lib/pkgconfig"
-# PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/zlib/lib/pkgconfig"
-# PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/bzip2/lib/pkgconfig"
-# PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig"
-# export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$PYENV_ROOT/versions/$PYENV_VERSION/lib/pkgconfig"
-
-# export DD_TRACE_STARTUP_LOGS="false"
-
-# end
+# Annoying thing on Heroku shell
+export DD_TRACE_STARTUP_LOGS="false"
 
 
 eval "$(gh completion -s zsh)"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+	eval "$(pyenv init -)"
+fi
+
+if which pyenv-virtualenv-init > /dev/null; then
+	eval "$(pyenv virtualenv-init -)";
+fi
+
+source ~/.scripts/detect_virtualenvs.sh
+source /usr/local/bin/virtualenvwrapper.sh
+
+export PATH="$HOME/.poetry/bin:$PATH"
