@@ -18,3 +18,4 @@ sublime-text
 tunnelbear
 visual-studio-code
 tempo
+finicky
