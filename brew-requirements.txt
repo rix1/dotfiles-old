@@ -2,10 +2,11 @@ coreutils
 ffmpeg
 fnm
 fzf
+gh
 gpg
 htop-osx
 nmap
 tree
 wget
+yarn
 z
-gh
