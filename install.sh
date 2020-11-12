@@ -152,51 +152,35 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-# OS spesifics
-if [ "$(uname)" == "Linux" ]; then
-	echo "\033[0;33m Environment detected as Linux \033[0m"
-	sudo apt-get -y install coreutils curl zsh
-elif [ "$(uname)" == "Darwin" ]; then
-	
-	echo "\033[0;33m Environment detected as macOS \033[0m"
+echo "\033[0;33m Environment detected as macOS \033[0m"
 
 
-	# Show hidden files
-	echo "${purple}Show hidden files? (y/n)${NC}"
-	read -r response </dev/tty
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-		echo "\033[0;33mChanging Finder settings to display hidden files \033[0m"
-		defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder
-		echo "${green}Hidden files is now displayed in Finder${NC}"
-	fi
-	
-
-	# Remove spotlight icon
-	echo "${purple}Remove spotlight icon? (y/n) ${NC}"
-	read -r response </dev/tty
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-		echo "\033[0;33mRemoving Spotlight icon \033[0m"
-		sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-		echo "${green}Spotlight icon removed${NC}"
-	fi
-	
-	# Fancy clock
-	echo "${purple}Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window? (y/n) ${NC}"
-	read -r response </dev/tty
-	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-		echo "\033[0;33mWorking on it.. \033[0m"
-		sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
-		echo "${green}OK${NC}"
-	fi
-
-	setup_mac;
-	install_xcode_cli;
-	setup_brew;
-	install_npm_globals;
-  	setup_vs_code;
+# Show hidden files
+echo "${purple}Show hidden files? (y/n)${NC}"
+read -r response </dev/tty
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+	echo "\033[0;33mChanging Finder settings to display hidden files \033[0m"
+	defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder
+	echo "${green}Hidden files is now displayed in Finder${NC}"
 fi
 
+
+# Remove spotlight icon
+echo "${purple}Remove spotlight icon? (y/n) ${NC}"
+read -r response </dev/tty
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+	echo "\033[0;33mRemoving Spotlight icon \033[0m"
+	sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+	echo "${green}Spotlight icon removed${NC}"
+fi
+
+setup_mac;
+install_xcode_cli;
+setup_brew;
+install_npm_globals;
+setup_vs_code;
 install_python_globals;
+echo "\033[0;33m ========== THATS IT FOR DEPS! LETSS CONTINUE ========== \033[0m"
 
 # Install zsh
 echo "\033[0;33m Checking if oh-my-zsh is installed.. \033[0m"
