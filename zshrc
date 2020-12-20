@@ -159,7 +159,7 @@ if which pyenv-virtualenv-init > /dev/null; then
 	eval "$(pyenv virtualenv-init -)";
 fi
 
-source ~/.scripts/detect_virtualenvs.sh
+# source ~/.scripts/detect_virtualenvs.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="$HOME/.poetry/bin:$PATH"
