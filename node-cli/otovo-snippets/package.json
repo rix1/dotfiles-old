@@ -1,0 +1,17 @@
+{
+  "name": "otovo-snippets",
+  "version": "1.0.0",
+  "description": "Personal utils for doing Otovo stuff",
+  "main": "index.js",
+  "bin": {
+    "mlink": "./bin/otovo-link.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rix1",
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^16.2.0"
+  }
+}
