@@ -108,3 +108,8 @@ function t(){
 function cdntime(){
   time curl -I -XGET $1
 }
+
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}

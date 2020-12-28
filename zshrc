@@ -1,4 +1,6 @@
 # Path to your oh-my-zsh installation.
+zmodload zsh/zprof
+
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -85,12 +87,16 @@ fi
 # Dircolors
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
+# Old prompt? not sure if needed
 # autoload -Uz compinit
 # compinit
 
-autoload -U promptinit; promptinit
-prompt pure
+# Pure
+# autoload -U promptinit; promptinit
+# prompt pure
 
+# Starhip
+eval "$(starship init zsh)"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
