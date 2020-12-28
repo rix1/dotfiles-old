@@ -57,13 +57,6 @@ export LC_ALL=en_US.UTF-8
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/share/python:$PATH
 
-
-# export PYENV_ROOT=/usr/local/bin/pyenv
-# if which pyenv > /dev/null; then
-#     eval "$(pyenv init -)"
-# fi
-
-
 # Aliases
 source ~/.aliases/main
 
@@ -145,6 +138,10 @@ export PASSWORD_STORE_DIR=~/.password-store/
 # 2020-11-11 11:38 Needed to get psycopg2 working!
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl@1.1/lib/"
 
+# 2020-11-11 23:48 Needed to get cryptography working on Big Sur
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
 # Annoying thing on Heroku shell
 export DD_TRACE_STARTUP_LOGS="false"
 
@@ -155,11 +152,12 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
 fi
 
+
 if which pyenv-virtualenv-init > /dev/null; then
 	eval "$(pyenv virtualenv-init -)";
 fi
 
-source ~/.scripts/detect_virtualenvs.sh
+# source ~/.scripts/detect_virtualenvs.sh
 source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="$HOME/.poetry/bin:$PATH"
