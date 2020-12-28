@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="remy"
+# ZSH_THEME="remy"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -84,8 +84,13 @@ fi
 
 # Dircolors
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
-autoload -Uz compinit
-compinit
+
+# autoload -Uz compinit
+# compinit
+
+autoload -U promptinit; promptinit
+prompt pure
+
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -130,8 +135,10 @@ source $ZSH/oh-my-zsh.sh
 # fzf is a general-purpose command-line fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# fnm
+# fnm and shell
 eval `fnm env`
+
+
 
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
@@ -155,11 +162,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
 fi
 
-if which pyenv-virtualenv-init > /dev/null; then
-	eval "$(pyenv virtualenv-init -)";
-fi
+# if which pyenv-virtualenv-init > /dev/null; then
+# 	eval "$(pyenv virtualenv-init -)";
+# fi
 
 # source ~/.scripts/detect_virtualenvs.sh
-source /usr/local/bin/virtualenvwrapper.sh
+# source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="$HOME/.poetry/bin:$PATH"
