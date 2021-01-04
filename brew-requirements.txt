@@ -10,3 +10,4 @@ tree
 wget
 yarn
 z
+starship
