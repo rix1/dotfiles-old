@@ -4,6 +4,5 @@ localtunnel
 vercel
 npm
 peerflix
-tiny-care-terminal
 ytdl
 jay
