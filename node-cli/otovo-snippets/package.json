@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "open": "^7.3.0",
+    "unleash-client": "^3.8.0",
     "yargs": "^16.2.0"
   }
 }
