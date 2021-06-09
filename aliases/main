@@ -113,3 +113,8 @@ timezsh() {
   shell=${1-$SHELL}
   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
+
+function decode_email(){
+  # usage: pbpaste | decode_email
+  python -m quopri -d $1
+}
