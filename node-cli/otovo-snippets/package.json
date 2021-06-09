@@ -4,8 +4,8 @@
   "description": "Personal utils for doing Otovo stuff",
   "main": "index.js",
   "bin": {
-    "mlink": "./bin/otovo-link.js",
-    "oc": "./bin/otovo-open.js"
+    "ol": "./bin/otovo-link.js",
+    "oo": "./bin/otovo-open.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
