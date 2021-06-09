@@ -33,12 +33,12 @@ echo "${purple}Logging in to Keybase...${NC}"
   read -r response </dev/tty
   if [[ $response =~ ^([0-9 a-z]{70})$ ]]; then
     echo "${green}✅ Key selected. Importing public key from Keybase${yellow}"
-    keybase pgp export -q $response | gpg --import
+    keybase pgp export -q $response | gpg --import-ownertrust
     echo '\n'
     echo "${green}✅ Public key imported"
     echo "${yellow}Importing secret key from Keybase..."
     echo "${gray}Waiting for input through Keybase prompt...\n${NC}"
-    keybase pgp export -q $response --secret | gpg --allow-secret-key-import --import    
+    keybase pgp export -q $response --secret | gpg --allow-secret-key-import  --import-ownertrust
 
     gpgkey=`gpg --list-secret-keys --keyid-format LONG | perl -lne '/^sec[0-9 rsa]*\/([0-9A-Z]*)\s/ && print $1'`
     
