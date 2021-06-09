@@ -4,7 +4,7 @@ alias c="clear"
 # Django
 alias runserver="python manage.py runserver"
 alias syncdb="python manage.py syncdb"
-alias woc="workon cloud"
+alias woc="pyenv virtualenvwrapper && workon cloud"
 
 # Yarn
 alias ys="yarn start"
