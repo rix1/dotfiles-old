@@ -2,25 +2,24 @@
   email = rikardeide@gmail.com
   name = Rikard Eide
   signingkey = 50980AB2C75D059E
-	useConfigOnly = true
+  useConfigOnly = true
 [color]
   diff = auto
 [commit]
   gpgsign = true
 [alias]
-  co = checkout
-  br = branch
-  ci = commit
-  st = status
-  s = show
   loga = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
   logf = git log --name-only
-  # diffc = diff --cached
 [core]
-	excludesfile = /Users/rikardeide/.gitignore
+  excludesfile = /Users/rikardeide/.gitignore
+  editor = code --wait
 [rebase]
   autoSquash = true
 [push]
   default = current
+[pull]
+  rebase = true
 [includeIf "gitdir:~/Development/otovo/"]
     path = ~/Development/otovo/.gitconfig
+[gpg]
+  program = gpg
