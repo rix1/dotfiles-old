@@ -35,7 +35,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=":/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -60,12 +60,6 @@ export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=/usr/local/share/python:$PATH
 
 
-# export PYENV_ROOT=/usr/local/bin/pyenv
-# if which pyenv > /dev/null; then
-#     eval "$(pyenv init -)"
-# fi
-
-
 # Aliases
 source ~/.aliases/main
 
@@ -75,14 +69,14 @@ if [ -f ~/.private_aliases ]; then
 fi
 
 # OS spesifics
-if [ "$(uname)" '==' "Darwin" ]; then
-	source ~/.aliases/osx
-	# Z
-	. `brew --prefix`/etc/profile.d/z.sh
-	# Dircolors
-	eval `gdircolors ~/.dir_colors`
-	alias ls='gls --color'
-fi
+# if [ "$(uname)" '==' "Darwin" ]; then
+# 	source ~/.aliases/osx
+# 	# Z
+# 	. `brew --prefix`/etc/profile.d/z.sh
+# 	# Dircolors
+# 	eval `gdircolors ~/.dir_colors`
+# 	alias ls='gls --color'
+# fi
 
 # Dircolors
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
@@ -97,6 +91,7 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 
 # Starhip
 eval "$(starship init zsh)"
+export STARSHIP_CONFIG=~/Development/dotfiles/themes/starship.toml
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -126,7 +121,13 @@ export TTC_WEATHER='Oslo'
 # use web scraping instead.
 export TTC_APIKEYS=false
 
-export ANDROID_HOME="/usr/local/share/android-sdk"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export REACT_EDITOR=code
 
 # Issue with GPG solved with this:
 export GPG_TTY=$(tty)
@@ -146,7 +147,7 @@ eval `fnm env`
 
 
 
-export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
+# export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -161,18 +162,40 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/opt/openssl@1.1/lib/"
 # Annoying thing on Heroku shell
 export DD_TRACE_STARTUP_LOGS="false"
 
-
 eval "$(gh completion -s zsh)"
 
-if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
-fi
+export PATH="/Users/rikardeide/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-# if which pyenv-virtualenv-init > /dev/null; then
-# 	eval "$(pyenv virtualenv-init -)";
-# fi
+
 
 # source ~/.scripts/detect_virtualenvs.sh
 # source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="$HOME/.poetry/bin:$PATH"
+# export PATH="/opt/homebrew/sbin:$PATH"
+
+# export N_PREFIX="$HOME/.n" /Users/rikardeide/.n/bin/node TODO DELETE?
+export PATH="$N_PREFIX/bin:$PATH"
+
+# begin hello completion
+# . <(ol completion)
+# . <(oo completion)
+# end hello completion
+# export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+
+export CRYPTOGRAPHY_SUPPRESS_LINK_FLAGS="1" 
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+
+#  CFLAGS="-arch arm64" CXXFLAGS="-arch arm64" LDFLAGS="-arch arm64" CC="clang"
+
+
+export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
+export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
+export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
