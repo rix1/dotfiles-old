@@ -1,16 +1,11 @@
 1password
-adobe-creative-cloud
-android-file-transfer
 dropbox
-firefox
 google-chrome
 harvest
 imageoptim
 iterm2
-keybase
 numi
 nvalt
-postman
 rectangle
 slack
 spotify
