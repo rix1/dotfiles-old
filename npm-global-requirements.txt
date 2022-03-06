@@ -1,8 +1,0 @@
-@sanity/cli
-http-server
-localtunnel
-vercel
-npm
-peerflix
-ytdl
-jay

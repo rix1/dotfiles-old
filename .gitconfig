@@ -12,7 +12,7 @@
   logf = git log --name-only
 [core]
   excludesfile = /Users/rikardeide/.gitignore
-  editor = code --wait
+  editor = vi
 [rebase]
   autoSquash = true
 [push]
