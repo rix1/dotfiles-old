@@ -129,6 +129,7 @@ function setup_file_associations {
     echo "${yellow}Setting up file associations...${NC}"
   if which duti > /dev/null; then
     echo "${yellow}Duti is installed, but theres no associations yet...Will do nothing${NC}"
+    # https://superuser.com/questions/273756/how-to-change-default-app-for-all-files-of-particular-file-type-through-terminal
     # duti -s $(osascript -e 'id of app "Sublime Text"') all
   else
     echo "${red}Duti is not installed${NC}"
