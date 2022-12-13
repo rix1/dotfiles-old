@@ -12,11 +12,12 @@
   logf = git log --name-only
 [core]
   excludesfile = /Users/rikardeide/.gitignore
-  editor = vi
+  editor = vim
 [rebase]
   autoSquash = true
 [push]
   default = current
+	autoSetupRemote = true
 [pull]
   rebase = true
 [includeIf "gitdir:~/Development/otovo/"]

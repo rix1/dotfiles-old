@@ -1,4 +1,3 @@
-color koehler
 set nu
 
 " If KDE, set a readable font
@@ -195,5 +194,12 @@ match OverLength /\%80v.\+/
 set fileencoding=utf-8
 set encoding=utf-8
 set termencoding=utf-8
+
+
+" theme
+syntax enable
+color koehler
+set t_Co=256
+colorscheme koehler
 
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes
