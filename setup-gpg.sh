@@ -24,7 +24,7 @@ echo "${purple}\nReady to start? ${gray}(y/n)${NC}"
 echo "${purple}Logging in to Keybase...${NC}"
 
 {
-  keybase login &&
+  keybase --pinentry=none login &&
   echo '\n'
   echo "${purple}Listing keys from Keybase:${NC}"
   keybase pgp list

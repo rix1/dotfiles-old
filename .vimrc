@@ -202,4 +202,7 @@ color koehler
 set t_Co=256
 colorscheme koehler
 
+" FZF
+set rtp+=/opt/homebrew/opt/fzf
+
 au BufEnter /private/tmp/crontab.* setl backupcopy=yes

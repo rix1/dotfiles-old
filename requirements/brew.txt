@@ -8,11 +8,9 @@ tree
 wget
 z
 starship
-espansio
 pnpm
 yarn
 fzf
 fd
 bat
 fish
-duti

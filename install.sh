@@ -14,15 +14,15 @@ function install_xcode_cli {
 function install_brew {
   echo "Installing Homebrew..."
 	if ! which brew > /dev/null; then
-    ruby \
-    -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
-    </dev/null
-    brew doctor
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/rix1/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/rix1/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    brew doctor;
   else
     echo "Brew was already installed, upgrading"
     brew update;
     brew upgrade;
-    brew prune
   fi
 }
 
@@ -47,12 +47,12 @@ function install_npm_globals {
   fi
 }
 
-function setup_vs_code() {
-  echo "Installing VS code libraries..."
-  if hash code 2>/dev/null; then
-    cat ./requirements/vs-code.txt | xargs code --install-extension
-  fi
-}
+# function setup_vs_code() {
+#  echo "Installing VS code libraries..."
+#  if hash code 2>/dev/null; then
+#    cat ./requirements/vs-code.txt | xargs code --install-extension
+#  fi
+# }
 
 # function install_python_globals {
 #   echo "Installing python globals..."
@@ -78,6 +78,7 @@ function setup_mac {
   echo "✅ Remove the auto-hiding Dock delay"
   defaults write com.apple.dock autohide-delay -float 0 2>/dev/null
 
+  
   echo "✅ Automatically hide and show the Dock"
   defaults write com.apple.dock autohide -bool true 2>/dev/null
 
@@ -165,8 +166,8 @@ fi
 setup_mac;
 install_xcode_cli;
 setup_brew;
-install_npm_globals;
-setup_vs_code;
+# install_npm_globals;
+# setup_vs_code;
 # install_python_globals;
 
 
@@ -217,11 +218,11 @@ echo "${yellow} Changing to the $dotfiles_dir directory ${NC}"
 cd $dotfiles_dir
 echo "${green}Done!${NC}"
 
-files="vimrc dir_colors .gitconfig .gitignore .editorconfig"    	# list of files/folders to symlink in homedir
+files=".vimrc dir_colors .gitconfig .gitignore .editorconfig"    	# list of files/folders to symlink in homedir
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
 	echo "${yellow} Creating symlink to $file in home directory. ${NC}"
-	ln -s $dotfiles_dir/$file ~/.$file
+	ln -s $dotfiles_dir/$file ~/$file
 done
 
 

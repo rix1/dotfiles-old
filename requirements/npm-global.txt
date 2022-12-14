@@ -1,2 +1,0 @@
-@sanity/cli
-vercel
