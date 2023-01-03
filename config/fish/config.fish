@@ -8,9 +8,9 @@ starship init fish | source
 
 source $HOME/.config/fish/aliases.fish
 
-# fzf_configure_bindings --git_log=\cl --directory=\cf
+fzf_configure_bindings --git_log=\cl --directory=\cf
 
-# set fish_user_paths /Users/rikardeide/Library/Python/3.9/bin $fish_user_paths
+pyenv init - | source
 
 # set -x ANDROID_HOME $HOME/Library/Android/sdk
 # set -U fish_user_paths $HOME/Library/Android/sdk/platform-tools $fish_user_paths
