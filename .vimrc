@@ -61,9 +61,9 @@ nnoremap Q gqap
 vnoremap Q gq
 
 " normally don't automatically format `text' as it is typed, IE only do this
-" with comments, at 79 characters:
+" with comments, at 80 characters:
 " set formatoptions-=t
-" set textwidth=79
+" set textwidth=80
 
 
 " enable filetype detection:
@@ -184,6 +184,13 @@ set backspace=eol,start,indent
 "set backupdir=~/.backup
 "set dir=~/.backup
 
+" theme
+syntax enable
+color koehler
+set t_Co=256
+colorscheme koehler
+
+
 " Hilight everything beoynd line 80
 highlight ExtraWhitespace ctermbg=red guibg=red
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
@@ -195,12 +202,6 @@ set fileencoding=utf-8
 set encoding=utf-8
 set termencoding=utf-8
 
-
-" theme
-syntax enable
-color koehler
-set t_Co=256
-colorscheme koehler
 
 " FZF
 set rtp+=/opt/homebrew/opt/fzf
