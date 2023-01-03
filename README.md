@@ -53,3 +53,4 @@ Settings is located at `./iterm-preferences/com.googlecode.iterm2.plist`
 - Add `/opt/homebrew/bin/fish` to `/etc/shells`
 
 Ditch the PGP import script. Use this instead: https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/
+- Authenticate with Github using GH
