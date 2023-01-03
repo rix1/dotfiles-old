@@ -1,3 +1,9 @@
+red="\033[0;31m"
+yellow="\033[0;33m"
+green="\033[0;32m"
+purple="\033[0;35m"
+NC="\033[0m" # No Color
+
 ############ Installations functions ############
 
 function install_xcode_cli {
@@ -8,73 +14,50 @@ function install_xcode_cli {
 function install_brew {
   echo "Installing Homebrew..."
 	if ! which brew > /dev/null; then
-    ruby \
-    -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
-    </dev/null
-    brew doctor
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/rix1/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/rix1/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    brew doctor;
   else
     echo "Brew was already installed, upgrading"
     brew update;
     brew upgrade;
-    brew prune
   fi
-}
-
-function install_brew_cask {
-  echo "Installing Homebrew Cask..."
-  brew cask > /dev/null 2>&1;
-  if [ $? -ne 0 ]; then
-    brew install caskroom/cask/brew-cask;
-    brew cask doctor;
-  else
-    echo "Brew cask was already installed, upgrading"
-    brew update;
-    brew upgrade;
-    brew prune
-  fi
-  brew tap caskroom/versions
 }
 
 function install_brew_deps {
   echo "Installing brew dependencies..."
-  cat brew-requirements.txt | xargs brew install
+  cat ./requirements/brew.txt | xargs brew install
   brew cleanup
   brew doctor
 }
 
 function install_brew_cask_deps {
-  echo "Installing brew cask dependencies..."
-  cat cask-requirements.txt | xargs brew cask install --appdir="/Applications"
+  echo "Installing brew (cask) dependencies..."
+  cat ./requirements/cask.txt | xargs brew install --appdir="/Applications"
   brew cleanup
   brew doctor
-}
-
-function setup_brew {
-  echo "Setting up brew..."
-  install_brew
-  install_brew_cask
-  install_brew_deps
-  install_brew_cask_deps
 }
 
 function install_npm_globals {
   echo "Installing npm globals... using yarn."
   if hash yarn 2>/dev/null; then
-    cat npm-global-requirements.txt | xargs npm i -g
+    cat ./requirements/npm-global.txt | xargs npm i -g
   fi
 }
 
-function setup_vs_code() {
-  echo "Installing VS code libraries..."
-  if hash code 2>/dev/null; then
-    cat vs-code-requirements.txt | xargs code --install-extension
-  fi
-}
+# function setup_vs_code() {
+#  echo "Installing VS code libraries..."
+#  if hash code 2>/dev/null; then
+#    cat ./requirements/vs-code.txt | xargs code --install-extension
+#  fi
+# }
 
-function install_python_globals {
-  echo "Installing python globals..."
-  cat python-global-requirements.txt | xargs sudo easy_install
-}
+# function install_python_globals {
+#   echo "Installing python globals..."
+#   cat ./requirements/python-global.txt | xargs sudo easy_install
+# }
 
 function setup_mac {
   echo "✅ Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
@@ -95,6 +78,7 @@ function setup_mac {
   echo "✅ Remove the auto-hiding Dock delay"
   defaults write com.apple.dock autohide-delay -float 0 2>/dev/null
 
+  
   echo "✅ Automatically hide and show the Dock"
   defaults write com.apple.dock autohide -bool true 2>/dev/null
 
@@ -122,28 +106,43 @@ function setup_mac {
 }
 
 
+function setup_brew {
+  echo "Setting up brew..."
+  install_brew
+  install_brew_deps
+  install_brew_cask_deps
+}
+
+function setup_fish {
+  echo "${yellow}Setting up Fish...${NC}"
+  if which fish > /dev/null; then
+    echo "${green}Fish is already installed...${NC}"
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    echo "✅ Fisher installed. Installing dependencies from /requirements/fish.txt..."
+    cat ./requirements/fish.txt | xargs fisher install
+    echo "✅ All Fisher plugins installed."
+  else
+    echo "${red}Fish is not installed! Something is wrong, please set up Fish manually...${NC}"
+  fi
+}
+
+function setup_file_associations {
+    echo "${yellow}Setting up file associations...${NC}"
+  if which duti > /dev/null; then
+    echo "${yellow}Duti is installed, but theres no associations yet...Will do nothing${NC}"
+    # https://superuser.com/questions/273756/how-to-change-default-app-for-all-files-of-particular-file-type-through-terminal
+    # duti -s $(osascript -e 'id of app "Sublime Text"') all
+  else
+    echo "${red}Duti is not installed${NC}"
+  fi
+}
+
 
 ############ Installations functions end ############
 
-
-
-# Color stuff
-red="\033[0;31m"
-yellow="\033[0;33m"
-green="\033[0;32m"
-purple="\033[0;35m"
-NC="\033[0m" # No Color
-
-# echo "${red}Red text${NC}"
-# echo "${yellow}Yellow text${NC}"
-# echo "${green}Green text${NC}"
-# echo "${purple}Purple text${NC}"
-
 echo "###################################"
 echo "###   Dotfiles installation   #####"
-echo "###################################"
-
-echo ""
+echo "###################################\n"
 
 # Get sudo from user
 echo "You might need to input your sudo password"
@@ -152,125 +151,79 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-echo "\033[0;33m Environment detected as macOS \033[0m"
+echo "${yellow} This only works for macOS ${NC}"
 
 
 # Show hidden files
 echo "${purple}Show hidden files? (y/n)${NC}"
 read -r response </dev/tty
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-	echo "\033[0;33mChanging Finder settings to display hidden files \033[0m"
+	echo "${yellow}Changing Finder settings to display hidden files ${NC}"
 	defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder
 	echo "${green}Hidden files is now displayed in Finder${NC}"
-fi
-
-
-# Remove spotlight icon
-echo "${purple}Remove spotlight icon? (y/n) ${NC}"
-read -r response </dev/tty
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-	echo "\033[0;33mRemoving Spotlight icon \033[0m"
-	sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
-	echo "${green}Spotlight icon removed${NC}"
 fi
 
 setup_mac;
 install_xcode_cli;
 setup_brew;
-install_npm_globals;
-setup_vs_code;
-install_python_globals;
-echo "\033[0;33m ========== THATS IT FOR DEPS! LETSS CONTINUE ========== \033[0m"
+# install_npm_globals;
+# setup_vs_code;
+# install_python_globals;
 
-# Install zsh
-echo "\033[0;33m Checking if oh-my-zsh is installed.. \033[0m"
 
-if [ ! -d ~/.oh-my-zsh ]; then
-	echo "\033[0;33m Not installed \033[0m"
-	echo "\033[0;33m Installing oh-my-zsh..\033[0m"
-	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo "${yellow} ========== THATS IT FOR DEPS!  =========="
+echo "=== Will continue with configuration... === ${NC}"
+
+dotfiles_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )       # dotfiles directory
+mkdir -p ~/.config # this is required by a lot of stuff below
+
+# Install fish
+echo "${yellow} Checking if Fish is installed.. ${NC}"
+
+if [ ! $(which fish) ]; then
+	echo "${yellow} Not installed ${NC}"
+	echo "${yellow} Installing Fish...${NC}"
+  brew install fish
+	echo "${yellow} Creating symlinks to config files...${NC}"
+
+  ln -sf $dotfiles_dir/config/fish/config.fish $HOME/.config/fish/config.fish
+  ln -sf $dotfiles_dir/config/fish/aliases.fish $HOME/.aliases/fish/config.fish
+
 	echo "${green}OK${NC}"
 else
-	echo "\033[0;33m oh-my-zsh already installed \033[0m"
+	echo "${yellow} Fish shell already installed ${NC}"
 fi
-
 
 # Install fonts
-echo "\033[0;33mInstalling fonts..\033[0m"
-FONTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/fonts/rix1/*"
+echo "${yellow}Installing fonts..${NC}"
+fonts_dir=$( cd "$( dirname "$0" )" && pwd )"/fonts"
+find_command="find \"$fonts_dir\" \( -name '*.[o,t]tf' -or -name '*.pcf.gz' \) -type f -print0"
 
-if [ ! -d ~/.fonts ]; then
-	mkdir ~/.fonts
-fi
-
-for file in $FONTS
-do
-	if [ "$(uname)" == "Linux" ]; then
-		cp $file ~/.fonts/
-	else
-		cp $file ~/Library/Fonts/
-	fi
-	echo "\033[0;33m $file installed \033[0m"
-done
+font_dir="$HOME/Library/Fonts"
+eval $find_command | xargs -0 -I % cp "%" "$font_dir/"
 echo "${green}OK${NC}"
 
 
-#Install theme
-echo "\033[0;33m Installing theme (remy)..\033[0m"
-THEME=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"/themes/remy.zsh-theme"
-ln -sf $THEME ~/.oh-my-zsh/themes/remy.zsh-theme
-echo "${green}OK${NC}"
+# Set up configuration
+echo "${yellow} Setting up starship prompt ${NC}"
+ln -s $dir/config/sharship.toml ~/.config/
 
-# Syntax highlighting
-echo "\033[0;33m Setting up syntax highlighting.. \033[0m"
-if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
-	echo "\033[0;33m Not installed \033[0m"
-	echo "\033[0;33mInstalling syntax highlighting..\033[0m"
-	cd ~/.oh-my-zsh/custom/plugins && git clone git://github.com/zsh-users/zsh-syntax-highlighting.git 
-	cd $CURRENT_DIR
-	echo "${green}OK${NC}"
-
-else
-	echo "\033[0;33m oh-my-zsh already installed \033[0m"
-fi
+echo "${yellow} Setting up Espanso ${NC}"
+ln -sf $dir/config/espanso.yml $HOME/Library/Preferences/espanso/default.yml
 
 
-# Setup of dotfiles in home dir
-
-dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )           # dotfiles directory
-olddir=~/dotfiles_old             								# old dotfiles backup directory
-files="zshrc vimrc screenrc scripts aliases dir_colors .gitconfig .gitignore"    		# list of files/folders to symlink in homedir
-
-##########
-
-# create dotfiles_old in homedir
-echo "\033[0;33m Creating $olddir for backup of any existing dotfiles in ~ \033[0m"
-mkdir -p $olddir
-echo "${green}Done!${NC}"
 
 # change to the dotfiles directory
-echo "\033[0;33m Changing to the $dir directory \033[0m"
-cd $dir
+echo "${yellow} Changing to the $dotfiles_dir directory ${NC}"
+cd $dotfiles_dir
 echo "${green}Done!${NC}"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
+files=".vimrc dir_colors .gitconfig .gitignore .editorconfig"    	# list of files/folders to symlink in homedir
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
-	echo "\033[0;33m Moving any existing dotfiles from ~ to $olddir \033[0m"
-	mv ~/.$file ~/dotfiles_old/
-	echo "\033[0;33m Creating symlink to $file in home directory. \033[0m"
-	ln -s $dir/$file ~/.$file
+	echo "${yellow} Creating symlink to $file in home directory. ${NC}"
+	ln -s $dotfiles_dir/$file ~/$file
 done
-
-
-# Add Z to ~ if on linux
-if [ "$(uname)" == "Linux" ]; then
-	ln -sf $dir/scripts/z.sh ~/.z.sh
-fi
-
-# Check for private aliases, add if exists
-if [ -f $dir/private_aliases ]; then
-	ln -sf $dir/private_aliases ~/.private_aliases
-fi
 
 
 echo "${red}Please restart the machine for all changes to take effect${NC}"

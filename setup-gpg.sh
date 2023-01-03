@@ -24,7 +24,7 @@ echo "${purple}\nReady to start? ${gray}(y/n)${NC}"
 echo "${purple}Logging in to Keybase...${NC}"
 
 {
-  keybase login &&
+  keybase --pinentry=none login &&
   echo '\n'
   echo "${purple}Listing keys from Keybase:${NC}"
   keybase pgp list
@@ -41,7 +41,7 @@ echo "${purple}Logging in to Keybase...${NC}"
     keybase pgp export -q $response --secret | gpg --allow-secret-key-import  --import-ownertrust
 
     gpgkey=`gpg --list-secret-keys --keyid-format LONG | perl -lne '/^sec[0-9 rsa]*\/([0-9A-Z]*)\s/ && print $1'`
-    
+
     echo "\n${purple}Do you want to set the gpg key ${gray}($gpgkey)${purple} as signing key in global Git config? ${gray}(y/n)${NC}"
     read -r response </dev/tty
     if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then

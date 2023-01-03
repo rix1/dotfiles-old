@@ -1,5 +1,0 @@
-# Aliases
-alias flushdns='sudo dscacheutil -flushcache'
-alias ios="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
-alias kabel="ifconfig en0 inet"
-alias wifi="ifconfig en0 inet"

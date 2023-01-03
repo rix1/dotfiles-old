@@ -1,0 +1,16 @@
+coreutils
+ffmpeg
+fnm
+gh
+gpg
+htop-osx
+tree
+wget
+z
+starship
+pnpm
+yarn
+fzf
+fd
+bat
+fish

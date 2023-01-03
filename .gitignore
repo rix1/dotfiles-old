@@ -42,3 +42,4 @@ Temporary Items
 yalc.lock
 .now/
 rix-temp/
+.venv

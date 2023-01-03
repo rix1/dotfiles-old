@@ -2,55 +2,55 @@
 
 ![result](http://i.imgur.com/FAgPZ6N.png)
 
+## Fonts
+
+- Vscode: Dank Mono, FiraCode Nerd Font, Menlo, Monaco, Courier New, monospace
+- iTerm: FiraCode Nerd Font
+
+Note: Only Dank mono is included in this repo. You need to install the others separately:
+
+- https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode
+
 ### How
 
-1. Install iTerm2
+1. Install Command line tools
 
-2. Install Command line tools
+`xcode-select --install`
 
-```xcode-select --install```
+2. Clone repo to home directory
 
-3. Clone repo to home directory
+`git clone https://github.com/rix1/dotfiles.git`
 
-```git clone https://github.com/rix1/dotfiles.git```
+3. Run install script (OSX only)
 
-4. Run install script
+`cat install.sh | sh`
 
-On OS X
-
-```cat install.sh | sh```
-
-On Linux
-
-```bash install.sh```
-
-5. Apply iTerm theme and settings
+4. Apply iTerm theme and settings
 
 Settings is located at `./iterm-preferences/com.googlecode.iterm2.plist`
 
-6. Restart iTerm
+5. Restart iTerm
 
-7. Install fonts:
+6. Fix insecure files:
 
-```git clone https://github.com/powerline/fonts.git```
+`compaudit | xargs chmod g-w`
 
-8. Fix insecure files:
+7. (optional) Setup gpg by installing PGP keys from Keybase
 
-```compaudit | xargs chmod g-w```
-
-
-8. (optional) Setup gpg by installing PGP keys from Keybase
-
-```cat setup-gpg.sh | sh```
-
+`cat setup-gpg.sh | sh`
 
 ### Troubleshooting
 
 - Is is something wrong with the fonts? Try `echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"`. This should look like this ![Icons](./characters.png)
 - Shell is not loading? Remember to change shell to `zsh` using `chsh -s $(which zsh)`.
-- Remember to [init a git folder](https://git-scm.com/docs/git-config#_conditional_includes) in /Development/work/
+- Remember to [init a git folder](https://git-scm.com/docs/git-config#_conditional_includes) in /Development/work/ to commit from correct email addrsss.
 
-### Private aliases
-If you have any extra aliases, you can put them in a file called ```private_aliases``` inside the dotfiles directory. That file will then automatically be sourced.  
 
-Inspired by https://remysharp.com/2013/07/25/my-terminal-setup
+
+### New guide
+
+
+- Add `/opt/homebrew/bin/fish` to `/etc/shells`
+
+Ditch the PGP import script. Use this instead: https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/
+- Authenticate with Github using GH
