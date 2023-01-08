@@ -70,7 +70,7 @@ function setup_mac {
   defaults write ~/Library/Preferences/.GlobalPreferences.plist com.apple.mouse.scaling -float 3
   defaults write ~/Library/Preferences/.GlobalPreferences.plist com.apple.swipescrolldirection -boolean NO
 
-  echo "✅ Keyboard: Make key repeat fast"
+  echo "✅ Keyboard: Make key repeat blazingly fast"
   defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
   defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 

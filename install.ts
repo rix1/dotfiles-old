@@ -7,6 +7,7 @@ import {
 import { humanize } from "./utils/humanize.ts";
 import { error, info } from "./utils/prompt.ts";
 import { installFonts } from "./installScripts/fonts.ts";
+import { setupMac } from "./installScripts/macos.ts";
 
 let email: string, name: string;
 
@@ -17,6 +18,11 @@ let email: string, name: string;
 // await installBrewApps("./requirements/brew.txt");
 // await installBrewApps("./requirements/cask.txt");
 // await installFonts();
+// await setupMac();
+
+// symlinks
+// git config
+// fish, fisher and startship
 
 async function initialize() {
   email = await Input.prompt({
