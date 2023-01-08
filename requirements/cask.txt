@@ -1,16 +1,9 @@
 1password
-dropbox
 google-chrome
-imageoptim
 iterm2
 numi
-nvalt
 rectangle
 slack
 spotify
 sublime-text
-tunnelbear
 visual-studio-code
-cleanshot
-raycast
-cron

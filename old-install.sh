@@ -6,17 +6,12 @@ NC="\033[0m" # No Color
 
 ############ Installations functions ############
 
-function install_xcode_cli {
-  echo "Installing Xcode CLI tools..."
-  xcode-select --install;
-}
-
 function install_brew {
   echo "Installing Homebrew..."
 	if ! which brew > /dev/null; then
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-		echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/rix1/.zprofile
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/rix1/.zprofile
+		echo '# Set PATH, MANPATH, etc., for Homebrew.' >> ~/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
     brew doctor;
   else
@@ -40,24 +35,6 @@ function install_brew_cask_deps {
   brew doctor
 }
 
-function install_npm_globals {
-  echo "Installing npm globals... using yarn."
-  if hash yarn 2>/dev/null; then
-    cat ./requirements/npm-global.txt | xargs npm i -g
-  fi
-}
-
-# function setup_vs_code() {
-#  echo "Installing VS code libraries..."
-#  if hash code 2>/dev/null; then
-#    cat ./requirements/vs-code.txt | xargs code --install-extension
-#  fi
-# }
-
-# function install_python_globals {
-#   echo "Installing python globals..."
-#   cat ./requirements/python-global.txt | xargs sudo easy_install
-# }
 
 function setup_mac {
   echo "✅ Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
@@ -78,7 +55,6 @@ function setup_mac {
   echo "✅ Remove the auto-hiding Dock delay"
   defaults write com.apple.dock autohide-delay -float 0 2>/dev/null
 
-  
   echo "✅ Automatically hide and show the Dock"
   defaults write com.apple.dock autohide -bool true 2>/dev/null
 
@@ -113,31 +89,6 @@ function setup_brew {
   install_brew_cask_deps
 }
 
-function setup_fish {
-  echo "${yellow}Setting up Fish...${NC}"
-  if which fish > /dev/null; then
-    echo "${green}Fish is already installed...${NC}"
-    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-    echo "✅ Fisher installed. Installing dependencies from /requirements/fish.txt..."
-    cat ./requirements/fish.txt | xargs fisher install
-    echo "✅ All Fisher plugins installed."
-  else
-    echo "${red}Fish is not installed! Something is wrong, please set up Fish manually...${NC}"
-  fi
-}
-
-function setup_file_associations {
-    echo "${yellow}Setting up file associations...${NC}"
-  if which duti > /dev/null; then
-    echo "${yellow}Duti is installed, but theres no associations yet...Will do nothing${NC}"
-    # https://superuser.com/questions/273756/how-to-change-default-app-for-all-files-of-particular-file-type-through-terminal
-    # duti -s $(osascript -e 'id of app "Sublime Text"') all
-  else
-    echo "${red}Duti is not installed${NC}"
-  fi
-}
-
-
 ############ Installations functions end ############
 
 echo "###################################"
@@ -164,14 +115,11 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 setup_mac;
-install_xcode_cli;
 setup_brew;
-# install_npm_globals;
-# setup_vs_code;
-# install_python_globals;
 
 
 echo "${yellow} ========== THATS IT FOR DEPS!  =========="
+
 echo "=== Will continue with configuration... === ${NC}"
 
 dotfiles_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )       # dotfiles directory
@@ -181,15 +129,20 @@ mkdir -p ~/.config # this is required by a lot of stuff below
 echo "${yellow} Checking if Fish is installed.. ${NC}"
 
 if [ ! $(which fish) ]; then
-	echo "${yellow} Not installed ${NC}"
-	echo "${yellow} Installing Fish...${NC}"
+	echo "${yellow} Fish not installed ${NC}"
   brew install fish
-	echo "${yellow} Creating symlinks to config files...${NC}"
+  echo "✅ Fish installed. Installing Fisher plugin manager..."
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+  echo "✅ Fisher installed. Installing dependencies from /requirements/fish.txt..."
+  cat ./requirements/fish.txt | xargs fisher install
+  echo "✅ All Fisher plugins installed."
+
+	echo "${yellow} Creating symlinks to Fish config files...${NC}"
 
   ln -sf $dotfiles_dir/config/fish/config.fish $HOME/.config/fish/config.fish
-  ln -sf $dotfiles_dir/config/fish/aliases.fish $HOME/.aliases/fish/config.fish
+  ln -sf $dotfiles_dir/config/fish/aliases.fish $HOME/.config/fish/aliases.fish
 
-	echo "${green}OK${NC}"
+	echo "${green}✅ OK - Fish (and Fisher) is installed and configured${NC}"
 else
 	echo "${yellow} Fish shell already installed ${NC}"
 fi
@@ -206,11 +159,7 @@ echo "${green}OK${NC}"
 
 # Set up configuration
 echo "${yellow} Setting up starship prompt ${NC}"
-ln -s $dir/config/sharship.toml ~/.config/
-
-echo "${yellow} Setting up Espanso ${NC}"
-ln -sf $dir/config/espanso.yml $HOME/Library/Preferences/espanso/default.yml
-
+ln -s $dotfiles_dir/config/starship.toml $HOME/.config/
 
 
 # change to the dotfiles directory
