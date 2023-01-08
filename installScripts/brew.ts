@@ -23,7 +23,7 @@ export async function installBrew() {
 
     const { code } = await p.status();
 
-    checkStatus(code, "Brew installation");
+    checkStatus(code, "Brew installation 🍺");
   }
 }
 
@@ -35,7 +35,11 @@ export async function installBrewApps(sourcePath: string) {
     message: "What programs do you wish to install with Brew?",
     options: input,
   });
-  if (!(await Confirm.prompt(`Will install ${apps.length} applications`))) {
+  if (
+    !(await Confirm.prompt(
+      `Will install ${apps.length} applications. Continue?`
+    ))
+  ) {
     console.log(info("Will not install any Brew dependencies"));
     return;
   }
@@ -45,6 +49,6 @@ export async function installBrewApps(sourcePath: string) {
   const { code } = await p.status();
   checkStatus(
     code,
-    `Brew app installation from ${sourcePath.split("/").at(-1)}`
+    `Brew app installation from ${sourcePath.split("/").at(-1)} 🍻`
   );
 }
