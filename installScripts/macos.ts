@@ -29,11 +29,8 @@ export async function setupMac() {
 
 const steps = [
   {
-    name: "✅ Show remaining battery time and percentage",
-    cmd: [
-      'defaults write com.apple.menuextra.battery ShowPercent -string "YES"',
-      'defaults write com.apple.menuextra.battery ShowTime -string "YES"',
-    ],
+    name: "✅ Finder: Set column view for as default for all finder windows",
+    cmd: ["defaults write com.apple.finder FXPreferredViewStyle Clmv"],
   },
   {
     name: "✅ Finder: Use current directory as default search scope in Finder",
@@ -64,29 +61,40 @@ const steps = [
     ],
   },
   {
-    name: "✅ Remove the auto-hiding Dock delay",
-    cmd: ["defaults write com.apple.dock autohide-delay -float 0"],
-  },
-  {
-    name: "✅ Automatically hide and show the Dock",
-    cmd: ["defaults write com.apple.dock autohide -bool true"],
-  },
-  {
-    name: "✅ Require password immediately after sleep or screen saver begins",
+    name: "✅ System: Require password immediately after sleep or screen saver begins",
     cmd: [
       "defaults write com.apple.screensaver askForPassword -int 1",
       "defaults write com.apple.screensaver askForPasswordDelay -int 0",
     ],
   },
   {
-    name: "✅ Set the icon size of the Dock to 36 pixels",
-    cmd: ["defaults write com.apple.dock tilesize -int 36"],
+    name: "✅ System: Show remaining battery time and percentage",
+    cmd: [
+      'defaults write com.apple.menuextra.battery ShowPercent -string "YES"',
+      'defaults write com.apple.menuextra.battery ShowTime -string "YES"',
+    ],
   },
   {
-    name: "✅ Expand save panel by default",
+    name: "✅ System: Expand save panel by default",
     cmd: [
       "defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true",
     ],
+  },
+  {
+    name: "✅ Dock: Automatically hide and show the Dock",
+    cmd: ["defaults write com.apple.dock autohide -bool true"],
+  },
+  {
+    name: "✅ Dock: Set the icon size of the Dock to 36 pixels",
+    cmd: ["defaults write com.apple.dock tilesize -int 36"],
+  },
+  {
+    name: "✅ Dock: Wipe all (default) app icons from the Dock",
+    cmd: ["defaults write com.apple.dock persistent-apps -array"],
+  },
+  {
+    name: "✅ Dock: Remove the auto-hiding Dock delay",
+    cmd: ["defaults write com.apple.dock autohide-delay -float 0"],
   },
   {
     name: "✅ Trackpad: Enable tap to click on Trackpad and login screen",
@@ -133,15 +141,7 @@ const steps = [
     name: "✅ Keyboard: Make key repeat blazingly fast",
     cmd: [
       "defaults write NSGlobalDomain InitialKeyRepeat -int 15",
-      "defaults write NSGlobalDomain KeyRepeat -int 0",
+      "defaults write NSGlobalDomain KeyRepeat -int 1",
     ],
-  },
-  {
-    name: "✅ Finder: Set column view for as default for all finder windows",
-    cmd: ["defaults write com.apple.finder FXPreferredViewStyle Clmv"],
-  },
-  {
-    name: "✅ Dock: Wipe all (default) app icons from the Dock",
-    cmd: ["defaults write com.apple.dock persistent-apps -array"],
   },
 ];

@@ -44,3 +44,11 @@ Note: Only Dank mono is included in this repo. You need to install the others se
 ### Troubleshooting
 
 - Is is something wrong with the fonts? Try `echo "\ue0b0 \u00b1 \ue0a0 \u27a6 \u2718 \u26a1 \u2699"`. This should look like this ![Icons](./characters.png)
+
+For Celery (GDAL really) to work make sure `DYLD_LIBRARY_PATH` is set!!
+
+```
+~/Desktop via  v19.3.0 on ☁️  (eu-central-1)
+❯ echo $DYLD_LIBRARY_PATH
+/opt/homebrew/lib/
+```
